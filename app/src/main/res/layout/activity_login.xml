@@ -27,7 +27,7 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0"
+        app:layout_constraintVertical_bias="1.0"
         app:srcCompat="@android:drawable/screen_background_light_transparent" />
 
     <EditText
@@ -76,23 +76,24 @@
         android:id="@+id/loginBtn"
         android:layout_width="151dp"
         android:layout_height="50dp"
-        android:layout_marginTop="84dp"
+        android:layout_marginTop="88dp"
         android:fontFamily="@font/montserrat"
         android:text="LOGIN"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/passLoginEtxt" />
+        app:layout_constraintTop_toBottomOf="@+id/forgotPassTxt" />
 
     <TextView
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="4dp"
+        android:layout_marginTop="48dp"
         android:fontFamily="@font/montserrat"
         android:text="ALREADY SIGN-UP?!"
         android:textColor="#050505"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/loginBtn" />
 
@@ -111,4 +112,16 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView"
         app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/forgotPassTxt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:fontFamily="@font/montserrat"
+        android:text="FORGOT PASSWORD"
+        android:textColor="#0637B3"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/passLoginEtxt"
+        app:layout_constraintTop_toBottomOf="@+id/passLoginEtxt" />
 </androidx.constraintlayout.widget.ConstraintLayout>

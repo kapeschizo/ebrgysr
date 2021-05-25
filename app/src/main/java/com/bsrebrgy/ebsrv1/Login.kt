@@ -18,7 +18,8 @@ class Login : AppCompatActivity() {
     var userLoginEtxt: EditText? = null
     var passLoginETxt: EditText? = null
     var loginBtn: Button? = null
-    var url: kotlin.String = "http://192.168.1.9/Ebrgy/API/loginAPI.php"
+    var forgetPassTxt: TextView? = null
+    var url: kotlin.String = "http://192.168.1.6/Ebrgy/API/loginAPI.php"
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
@@ -38,6 +39,11 @@ class Login : AppCompatActivity() {
                 passLoginETxt!!.text.toString()
             )
         }
+        forgetPassTxt = findViewById(R.id.forgotPassTxt)
+        forgetPassTxt!!.setOnClickListener {
+            val forgetPassIntent = Intent(this,ForgetPass::class.java)
+            startActivity(forgetPassIntent)
+        }
     }
     private fun login(user: String, pass: String) {
 
@@ -47,8 +53,8 @@ class Login : AppCompatActivity() {
                 passLoginETxt!!.setText(" ")
                 Toast.makeText(applicationContext, response, Toast.LENGTH_LONG).show()
 
-                if (response == "Register Successful") {
-                    val loginIntent = Intent(this, Login::class.java)
+                if (response == "Please update your profile") {
+                    val loginIntent = Intent(this, Profile::class.java)
                     startActivity(loginIntent)
                 }
 

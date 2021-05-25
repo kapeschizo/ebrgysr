@@ -1,55 +1,47 @@
 package com.bsrebrgy.ebsrv1
 
 import android.content.Intent
+import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
+import android.widget.TextView
 import android.widget.Toast
-import androidx.appcompat.app.AppCompatActivity
 import com.android.volley.AuthFailureError
 import com.android.volley.DefaultRetryPolicy
 import com.android.volley.Response
 import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
-import java.util.*
+import java.util.HashMap
 
-
-class Register : AppCompatActivity() {
-    var userRegEtxt: EditText? = null
-    var emailRegEtxt: EditText? = null
-    var signUpBtn: Button? = null
-    var url: String = "http://192.168.1.6/Ebrgy/API/sendEmail.php"
+class ForgetPass : AppCompatActivity() {
+    var emailForgetETxt: EditText? = null
+    var forgetBtn: Button? = null
+    var url: kotlin.String = "http://192.168.1.6/Ebrgy/API/forgotAPI.php"
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_register)
-        userRegEtxt = findViewById<EditText>(R.id.userSignEtxt)
-        emailRegEtxt = findViewById<EditText>(R.id.emailSignEtxt)
-        signUpBtn = findViewById<Button>(R.id.signUpBtn)
+        setContentView(R.layout.activity_forget_pass)
 
-        signUpBtn!!.setOnClickListener {
-            register(
-                userRegEtxt!!.text.toString(),
-                emailRegEtxt!!.text.toString()
+        val forgetBtn = findViewById<TextView>(R.id.forgetBtn)
+        emailForgetETxt = findViewById<EditText>(R.id.emailForgetEtxt)
+        forgetBtn!!.setOnClickListener {
+            forget(
+                emailForgetETxt!!.text.toString()
             )
         }
     }
 
-    private fun register(user: String, email: String) {
+    private fun forget(email: String) {
 
         val request: StringRequest =
             object : StringRequest(Method.POST, url, Response.Listener { response ->
-                userRegEtxt!!.setText(" ")
-                emailRegEtxt!!.setText(" ")
+                emailForgetETxt!!.setText(" ")
                 Toast.makeText(applicationContext, response, Toast.LENGTH_LONG).show()
-
-                if (response == "Register Successful") {
-                    val loginIntent = Intent(this, Login::class.java)
-                    startActivity(loginIntent)
-                }
+                val loginIntent = Intent(this,Login::class.java)
+                startActivity(loginIntent)
 
             }, Response.ErrorListener { error ->
-                userRegEtxt!!.setText(" ")
-                emailRegEtxt!!.setText(" ")
+                emailForgetETxt!!.setText(" ")
                 Toast.makeText(applicationContext, error.toString(), Toast.LENGTH_LONG).show()
             }
             ) {
@@ -57,12 +49,10 @@ class Register : AppCompatActivity() {
                 override fun getParams(): kotlin.collections.MutableMap<String, String> {
                     val map: kotlin.collections.MutableMap<String, String> =
                         HashMap<String, String>()
-                    map.put("user", user)
                     map.put("email", email)
                     return map
                 }
             }
-
         request.retryPolicy = DefaultRetryPolicy(
             0,
             DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
