@@ -2,6 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.bsrebrgy.ebsrv1">
 
+    <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
@@ -11,7 +12,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.EBSRV1"
         android:usesCleartextTraffic="true">
-        <activity android:name=".ForgetPass"></activity>
+        <activity
+            android:name=".AdminDashboard"
+            android:exported="true" />
+        <activity android:name=".ProfileImage" />
+        <activity android:name=".DashboardUser" />
+        <activity android:name=".ForgetPass" />
         <activity android:name=".Profile" />
         <activity android:name=".Register" />
         <activity android:name=".Login" />

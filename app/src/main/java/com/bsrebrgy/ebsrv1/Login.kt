@@ -1,87 +1,141 @@
 package com.bsrebrgy.ebsrv1
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.Button
-import android.widget.EditText
-import android.widget.TextView
-import android.widget.Toast
+import android.view.View
+import android.widget.*
+import androidx.appcompat.app.AppCompatActivity
 import com.android.volley.AuthFailureError
 import com.android.volley.DefaultRetryPolicy
 import com.android.volley.Response
 import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
-import java.util.HashMap
+import org.json.JSONException
+import org.json.JSONObject
+import java.util.*
 
 class Login : AppCompatActivity() {
+
     var userLoginEtxt: EditText? = null
     var passLoginETxt: EditText? = null
+    var signupTxt: TextView? = null
     var loginBtn: Button? = null
     var forgetPassTxt: TextView? = null
-    var url: kotlin.String = "http://192.168.1.6/Ebrgy/API/loginAPI.php"
+    var loadinglogin: ProgressBar? = null
+
+    lateinit var session : SessionManager
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
 
-        val signuptxt = findViewById<TextView>(R.id.signupTxt)
-        signuptxt.setOnClickListener {
+        session = SessionManager(this)
+
+        if(session.isloggedin()){
+            val i : Intent = Intent(applicationContext, DashboardUser::class.java)
+            i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+            startActivity(i)
+            finish()
+        }
+
+        loadinglogin = findViewById(R.id.loadinglogin)
+        signupTxt = findViewById(R.id.signupTxt)
+        signupTxt?.setOnClickListener {
             val signUpIntent = Intent(this, Register::class.java)
             startActivity(signUpIntent)
         }
 
-        userLoginEtxt = findViewById<EditText>(R.id.userLoginEtxt)
-        passLoginETxt = findViewById<EditText>(R.id.passLoginEtxt)
-        loginBtn = findViewById<Button>(R.id.loginBtn)
-        loginBtn!!.setOnClickListener {
-            login(
-                userLoginEtxt!!.text.toString(),
-                passLoginETxt!!.text.toString()
-            )
+        userLoginEtxt = findViewById(R.id.userLoginEtxt)
+        passLoginETxt = findViewById(R.id.passLoginEtxt)
+        loginBtn = findViewById(R.id.loginBtn)
+        loginBtn?.setOnClickListener {
+            login()
         }
+
         forgetPassTxt = findViewById(R.id.forgotPassTxt)
         forgetPassTxt!!.setOnClickListener {
             val forgetPassIntent = Intent(this,ForgetPass::class.java)
             startActivity(forgetPassIntent)
         }
+
     }
-    private fun login(user: String, pass: String) {
+    private fun login() {
+        loadinglogin?.visibility = View.VISIBLE
+        loginBtn?.visibility = View.GONE
+        val url = "http://www.barangaysanroqueantipolo.site/API/loginApi.php"
+        val user = userLoginEtxt?.text.toString().trim { it <= ' ' }
+        val pass = passLoginETxt?.text.toString().trim { it <= ' ' }
 
-        val request: StringRequest =
-            object : StringRequest(Method.POST, url, Response.Listener { response ->
-                userLoginEtxt!!.setText(" ")
-                passLoginETxt!!.setText(" ")
-                Toast.makeText(applicationContext, response, Toast.LENGTH_LONG).show()
+        if (user.isEmpty() || pass.isEmpty()) {
+            loadinglogin?.visibility = View.GONE
+            loginBtn?.visibility = View.VISIBLE
+            Toast.makeText(applicationContext, "Required Field Empty!", Toast.LENGTH_SHORT).show()
+        }
+        else{
+            val request: StringRequest =
+                object : StringRequest(Method.POST, url, Response.Listener { response ->
+                    try {
+                        val jsonObject = JSONObject(response)
+                        val success = jsonObject.getString("success")
+                        val message = jsonObject.getString("message")
 
-                if (response == "Please update your profile") {
-                    val loginIntent = Intent(this, Profile::class.java)
-                    startActivity(loginIntent)
+                        if (success == "0")
+                        {
+                            session.createdLoginSessions(user)
+                            Toast.makeText(applicationContext, message, Toast.LENGTH_SHORT).show()
+                            val adminIntent = Intent(this,AdminDashboard::class.java)
+                            startActivity(adminIntent)
+                        }
+                        else if (success == "2") {
+                            Toast.makeText(applicationContext, message, Toast.LENGTH_SHORT).show()
+                            session.createdLoginSessions(user)
+                            val profileIntent = Intent(this, Profile::class.java)
+                            startActivity(profileIntent)
+                        }
+                        else if (success == "3")
+                        {
+                            session.createdLoginSessions(user)
+                            Toast.makeText(applicationContext, message, Toast.LENGTH_SHORT).show()
+
+                            val profileIntent = Intent(this, DashboardUser::class.java)
+                            startActivity(profileIntent)
+                        }
+                        else
+                        {
+                            Toast.makeText(applicationContext, message, Toast.LENGTH_SHORT).show()
+                            loadinglogin?.visibility = View.GONE
+                            loginBtn?.visibility = View.VISIBLE
+                        }
+
+                    } catch (e: JSONException) {
+                        e.printStackTrace()
+                        Toast.makeText(applicationContext, "Register Error! $e", Toast.LENGTH_SHORT).show()
+                        loadinglogin?.visibility = View.GONE
+                        loginBtn?.visibility = View.VISIBLE
+                    }
+                }, Response.ErrorListener { error ->
+                    Toast.makeText(applicationContext, error.toString(), Toast.LENGTH_LONG).show()
+                    loadinglogin?.visibility = View.GONE
+                    loginBtn?.visibility = View.VISIBLE
+                }
+                ) {
+                    @Throws(AuthFailureError::class)
+                    override fun getParams(): MutableMap<String, String> {
+                        val map: MutableMap<String, String> =
+                            HashMap<String, String>()
+                        map.put("user", user)
+                        map.put("pass", pass)
+                        return map
+                    }
                 }
 
-            }, Response.ErrorListener { error ->
-                userLoginEtxt!!.setText(" ")
-                passLoginETxt!!.setText(" ")
-                Toast.makeText(applicationContext, error.toString(), Toast.LENGTH_LONG).show()
-            }
-            ) {
-                @Throws(AuthFailureError::class)
-                override fun getParams(): kotlin.collections.MutableMap<String, String> {
-                    val map: kotlin.collections.MutableMap<String, String> =
-                        HashMap<String, String>()
-                    map.put("user", user)
-                    map.put("pass", pass)
-                    return map
-                }
-            }
-
-        request.retryPolicy = DefaultRetryPolicy(
-            0,
-            DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
-            DefaultRetryPolicy.DEFAULT_BACKOFF_MULT
-        )
-
-        val queue = Volley.newRequestQueue(applicationContext)
-        queue.add(request)
-
+            request.retryPolicy = DefaultRetryPolicy(
+                0,
+                DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
+                DefaultRetryPolicy.DEFAULT_BACKOFF_MULT
+            )
+            val queue = Volley.newRequestQueue(applicationContext)
+            queue.add(request)
+        }
     }
 }
