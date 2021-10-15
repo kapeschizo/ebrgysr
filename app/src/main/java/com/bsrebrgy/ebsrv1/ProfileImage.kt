@@ -6,11 +6,9 @@ import android.graphics.Bitmap
 import android.os.Bundle
 import android.provider.MediaStore
 import android.util.Base64
+import android.view.View
 import android.view.WindowManager
-import android.widget.Button
-import android.widget.ImageView
-import android.widget.TextView
-import android.widget.Toast
+import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import com.android.volley.AuthFailureError
 import com.android.volley.Response
@@ -50,11 +48,26 @@ class ProfileImage : AppCompatActivity() {
     var nationTv: TextView? = null
     var cameraBtn: Button? = null
     var cameraIview: ImageView? = null
+    var cameraBtn2: Button? = null
+    var cameraIview2: ImageView? = null
+    var cameraBtn3: Button? = null
+    var cameraIview3: ImageView? = null
+    var cameraBtn4: Button? = null
+    var cameraIview4: ImageView? = null
     var bitmap: Bitmap? = null
+    var bitmap2: Bitmap? = null
+    var bitmap3: Bitmap? = null
+    var bitmap4: Bitmap? = null
     var encodedimage: String? = null
+    var encodedimage2: String? = null
+    var encodedimage3: String? = null
+    var encodedimage4: String? = null
     lateinit var session : SessionManager
     var user : String? = null
     var nextProfBtn : Button? = null
+    var spinnerVid: Spinner? = null
+    var vidAdapter: ArrayAdapter<String>? = null
+    var vidStatus = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -141,6 +154,13 @@ class ProfileImage : AppCompatActivity() {
 
         cameraIview = findViewById(R.id.cameraIview)
         cameraBtn = findViewById(R.id.cameraBtn)
+        cameraIview2 = findViewById(R.id.cameraIview2)
+        cameraBtn2 = findViewById(R.id.cameraBtn2)
+        cameraIview3 = findViewById(R.id.cameraIview3)
+        cameraBtn3 = findViewById(R.id.cameraBtn3)
+        cameraIview4 = findViewById(R.id.cameraIview4)
+        cameraBtn4 = findViewById(R.id.cameraBtn4)
+
 
         cameraBtn?.setOnClickListener {
             Dexter.withContext(applicationContext)
@@ -160,7 +180,78 @@ class ProfileImage : AppCompatActivity() {
                     }
                 }).check()
         }
-            nextProfBtn = findViewById(R.id.nextProfBtn)
+
+        cameraBtn2?.setOnClickListener {
+            Dexter.withContext(applicationContext)
+                .withPermission(Manifest.permission.CAMERA)
+                .withListener(object : PermissionListener {
+                    override fun onPermissionGranted(permissionGrantedResponse: PermissionGrantedResponse) {
+                        val intent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
+                        startActivityForResult(intent, 222)
+                    }
+
+                    override fun onPermissionDenied(permissionDeniedResponse: PermissionDeniedResponse) {}
+                    override fun onPermissionRationaleShouldBeShown(
+                        permissionRequest: PermissionRequest,
+                        permissionToken: PermissionToken
+                    ) {
+                        permissionToken.continuePermissionRequest()
+                    }
+                }).check()
+        }
+
+        cameraBtn3?.setOnClickListener {
+            Dexter.withContext(applicationContext)
+                .withPermission(Manifest.permission.CAMERA)
+                .withListener(object : PermissionListener {
+                    override fun onPermissionGranted(permissionGrantedResponse: PermissionGrantedResponse) {
+                        val intent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
+                        startActivityForResult(intent, 333)
+                    }
+
+                    override fun onPermissionDenied(permissionDeniedResponse: PermissionDeniedResponse) {}
+                    override fun onPermissionRationaleShouldBeShown(
+                        permissionRequest: PermissionRequest,
+                        permissionToken: PermissionToken
+                    ) {
+                        permissionToken.continuePermissionRequest()
+                    }
+                }).check()
+        }
+
+        cameraBtn4?.setOnClickListener {
+            Dexter.withContext(applicationContext)
+                .withPermission(Manifest.permission.CAMERA)
+                .withListener(object : PermissionListener {
+                    override fun onPermissionGranted(permissionGrantedResponse: PermissionGrantedResponse) {
+                        val intent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
+                        startActivityForResult(intent, 444)
+                    }
+
+                    override fun onPermissionDenied(permissionDeniedResponse: PermissionDeniedResponse) {}
+                    override fun onPermissionRationaleShouldBeShown(
+                        permissionRequest: PermissionRequest,
+                        permissionToken: PermissionToken
+                    ) {
+                        permissionToken.continuePermissionRequest()
+                    }
+                }).check()
+        }
+
+        spinnerVid = findViewById(R.id.spinnerVid)
+        val vidStat = arrayOf("Drivers License","Voters ID","Company ID","Student ID")
+        vidAdapter = ArrayAdapter<String>(this@ProfileImage,android.R.layout.simple_spinner_dropdown_item,vidStat)
+        spinnerVid?.adapter = vidAdapter
+
+        spinnerVid?.onItemSelectedListener = object : AdapterView.OnItemSelectedListener{
+            override fun onNothingSelected(parent: AdapterView<*>?) {
+            }
+            override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+                vidStatus = vidStat[position]
+            }
+        }
+
+        nextProfBtn = findViewById(R.id.nextProfBtn)
         nextProfBtn?.setOnClickListener { uploadtoserver() }
     }
 
@@ -170,6 +261,21 @@ class ProfileImage : AppCompatActivity() {
             cameraIview?.setImageBitmap(bitmap)
             encodebitmap(bitmap)
         }
+        else if (requestCode == 222 && resultCode == RESULT_OK) {
+            bitmap2 = data!!.extras!!["data"] as Bitmap?
+            cameraIview2?.setImageBitmap(bitmap2)
+            encodebitmap2(bitmap2)
+        }
+        else if (requestCode == 333 && resultCode == RESULT_OK) {
+            bitmap3 = data!!.extras!!["data"] as Bitmap?
+            cameraIview3?.setImageBitmap(bitmap3)
+            encodebitmap3(bitmap3)
+        }
+        else if (requestCode == 444 && resultCode == RESULT_OK) {
+            bitmap4 = data!!.extras!!["data"] as Bitmap?
+            cameraIview4?.setImageBitmap(bitmap4)
+            encodebitmap4(bitmap4)
+        }
         super.onActivityResult(requestCode, resultCode, data)
     }
 
@@ -177,6 +283,24 @@ class ProfileImage : AppCompatActivity() {
         val outputStream = ByteArrayOutputStream()
         bitmap?.compress(Bitmap.CompressFormat.PNG, 100, outputStream)
         encodedimage = Base64.encodeToString(outputStream.toByteArray(), Base64.DEFAULT)
+    }
+
+    private fun encodebitmap2(bitmap: Bitmap?) {
+        val outputStream2 = ByteArrayOutputStream()
+        bitmap?.compress(Bitmap.CompressFormat.PNG, 100, outputStream2)
+        encodedimage2 = Base64.encodeToString(outputStream2.toByteArray(), Base64.DEFAULT)
+    }
+
+    private fun encodebitmap3(bitmap: Bitmap?) {
+        val outputStream3 = ByteArrayOutputStream()
+        bitmap?.compress(Bitmap.CompressFormat.PNG, 100, outputStream3)
+        encodedimage3 = Base64.encodeToString(outputStream3.toByteArray(), Base64.DEFAULT)
+    }
+
+    private fun encodebitmap4(bitmap: Bitmap?) {
+        val outputStream4 = ByteArrayOutputStream()
+        bitmap?.compress(Bitmap.CompressFormat.PNG, 100, outputStream4)
+        encodedimage4 = Base64.encodeToString(outputStream4.toByteArray(), Base64.DEFAULT)
     }
 
     private fun uploadtoserver() {
@@ -205,9 +329,13 @@ class ProfileImage : AppCompatActivity() {
             val rel: String = religionTv!!.text.toString().trim { it <= ' ' }
             val nation: String = nationTv!!.text.toString().trim { it <= ' ' }
             val encodedimage = encodedimage.toString().trim { it <= ' ' }
+            val encodedimage2 = encodedimage2.toString().trim { it <= ' ' }
+            val vid = vidStatus
+            val encodedimage3 = encodedimage3.toString().trim { it <= ' ' }
+            val encodedimage4 = encodedimage4.toString().trim { it <= ' ' }
             val request: StringRequest =
                 object : StringRequest(Method.POST, url, Response.Listener { response ->
-                    Toast.makeText(applicationContext, "FileUploaded Successfully", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(applicationContext, "File Uploaded Successfully", Toast.LENGTH_SHORT).show()
 
                     val profileIntent = Intent(this, DashboardUser::class.java)
                     startActivity(profileIntent)
@@ -244,6 +372,10 @@ class ProfileImage : AppCompatActivity() {
                         map.put("religion", rel)
                         map.put("nation", nation)
                         map.put("upload", encodedimage)
+                        map.put("upload2", encodedimage2)
+                        map.put("vid", vid)
+                        map.put("upload3", encodedimage3)
+                        map.put("upload4", encodedimage4)
                         return map
                     }
                 }

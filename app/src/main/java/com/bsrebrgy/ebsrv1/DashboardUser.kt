@@ -13,9 +13,10 @@ import com.android.volley.DefaultRetryPolicy
 import com.android.volley.Response
 import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
+import com.squareup.picasso.Picasso
 import org.json.JSONException
 import org.json.JSONObject
-import java.util.HashMap
+import java.util.*
 
 class DashboardUser : AppCompatActivity() {
     lateinit var session : SessionManager
@@ -53,9 +54,15 @@ class DashboardUser : AppCompatActivity() {
                     val fname = jsonObject.getString("fname")
                     val mname = jsonObject.getString("mname")
                     val lname = jsonObject.getString("lname")
+                    val pimg = jsonObject.getString("pimg")
+
+                    val urlimg = "http://www.barangaysanroqueantipolo.site/$pimg"
 
                     val fullNameTxt = findViewById<TextView>(R.id.fullNameTxt)
                     fullNameTxt.setText(fname+" "+mname+" "+lname)
+
+                    val userImg = findViewById<ImageView>(R.id.userImg)
+                    Picasso.with(this).load(urlimg).into(userImg)
 
                 } catch (e: JSONException) {
                     e.printStackTrace()

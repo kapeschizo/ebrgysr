@@ -50,7 +50,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/noimg" />
 
-<!--    <TextClock-->
+    <!--    <TextClock-->
 <!--        android:id="@+id/txtClock"-->
 <!--        android:layout_width="241dp"-->
 <!--        android:layout_height="27dp"-->

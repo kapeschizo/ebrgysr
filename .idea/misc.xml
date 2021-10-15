@@ -3,6 +3,10 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/theri/ebsrv1/app/src/main/res/layout/activity_admin_dashboard.xml" value="0.33055555555555555" />
+        <entry key="..\:/Users/theri/ebsrv1/app/src/main/res/layout/activity_dashboard_user.xml" value="0.33055555555555555" />
+        <entry key="..\:/Users/theri/ebsrv1/app/src/main/res/layout/activity_profile.xml" value="0.33055555555555555" />
+        <entry key="..\:/Users/theri/ebsrv1/app/src/main/res/layout/activity_profile_image.xml" value="0.33055555555555555" />
         <entry key="..\:/ebsrv1/app/src/main/res/layout/activity_admin_dashboard.xml" value="0.33" />
         <entry key="..\:/ebsrv1/app/src/main/res/layout/activity_dashboard_user.xml" value="0.33" />
         <entry key="..\:/ebsrv1/app/src/main/res/layout/activity_forget_pass.xml" value="0.31666666666666665" />
