@@ -17,19 +17,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.499"
-        app:srcCompat="@drawable/brgylogo" />
-
-    <ImageView
-        android:id="@+id/imageView6"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0"
-        app:srcCompat="@android:drawable/screen_background_light_transparent" />
+        app:srcCompat="@drawable/bgopacity" />
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/textInputLayout3"
@@ -48,7 +36,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:background="#75000000"
+            android:background="#2B6777"
             android:ems="10"
             android:fontFamily="@font/catamaran"
             android:hint="username"
@@ -79,14 +67,15 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:background="#75000000"
+            android:background="#2B6777"
             android:ems="10"
             android:fontFamily="@font/catamaran"
             android:hint="password"
             android:inputType="textPassword"
             android:textColor="#FFFFFF"
             android:textColorHint="#FFFFFF"
-            android:textSize="20sp" />
+            android:textSize="20sp"
+            tools:ignore="SpeakableTextPresentCheck" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -97,7 +86,7 @@
         android:layout_marginTop="8dp"
         android:fontFamily="sans-serif"
         android:text="FORGOT PASSWORD"
-        android:textColor="#093BBC"
+        android:textColor="#084A44"
         android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="@+id/textInputLayout2"
@@ -107,13 +96,13 @@
         android:id="@+id/loginBtn"
         android:layout_width="126dp"
         android:layout_height="65dp"
-        android:layout_marginTop="230dp"
+        android:layout_marginTop="180dp"
         android:fontFamily="@font/catamaran"
         android:text="LOGIN"
         android:textSize="20sp"
+        app:backgroundTint="#2B6777"
         app:layout_constraintBottom_toTopOf="@+id/textView6"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/forgotPassTxt"
         app:layout_constraintVertical_bias="0.0" />
@@ -122,11 +111,12 @@
         android:id="@+id/textView6"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="324dp"
+        android:layout_marginTop="304dp"
         android:text="ALREADY A MEMBER?!"
         android:textColor="#020202"
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.501"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textInputLayout2" />
 
@@ -136,7 +126,7 @@
         android:layout_height="31dp"
         android:fontFamily="@font/catamaran"
         android:text="REGISTER"
-        android:textColor="#EA463A"
+        android:textColor="#FB2B1C"
         android:textSize="18dp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"

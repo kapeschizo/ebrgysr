@@ -4,63 +4,181 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#002B6777"
     tools:context=".DashboardUser">
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="-10dp"
+        android:alpha="0.40"
+        android:scaleType="centerCrop"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/imageView12"
+        app:layout_constraintVertical_bias="0.0"
+        app:srcCompat="@drawable/bgopacity" />
 
     <ImageView
         android:id="@+id/imageView12"
         android:layout_width="0dp"
-        android:layout_height="200dp"
+        android:layout_height="170dp"
         android:scaleType="centerCrop"
+        app:layout_constraintBottom_toBottomOf="@+id/userImg"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0"
         app:srcCompat="@drawable/brgylogo" />
-
-    <Button
-        android:id="@+id/logoutBtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="28dp"
-        android:text="Logout"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/fullNameTxt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="4dp"
+        android:fontFamily="@font/montserrat"
         android:text="Full Name"
-        android:textColor="#070707"
-        android:textSize="20dp"
-        app:layout_constraintStart_toEndOf="@+id/userImg"
-        app:layout_constraintTop_toBottomOf="@+id/imageView12" />
+        android:textColor="#2b6777"
+        android:textSize="24dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.502"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/userImg" />
 
     <ImageView
         android:id="@+id/userImg"
-        android:layout_width="139dp"
-        android:layout_height="132dp"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="140dp"
+        android:layout_width="154dp"
+        android:layout_height="157dp"
+        android:layout_marginTop="40dp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/noimg" />
 
+    <TextView
+        android:id="@+id/emailTxt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Email Address"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.501"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/fullNameTxt" />
+
+    <Button
+        android:id="@+id/changeBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="48dp"
+        android:layout_marginTop="2dp"
+        android:text="Change Picture"
+        android:textSize="10sp"
+        app:backgroundTint="#2b6777"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/emailTxt" />
+
+    <ImageView
+        android:id="@+id/logoutImg"
+        android:layout_width="62dp"
+        android:layout_height="51dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:srcCompat="@drawable/uplogout" />
+
+    <View
+        android:id="@+id/divider3"
+        android:layout_width="430dp"
+        android:layout_height="1dp"
+        android:layout_marginTop="5dp"
+        android:background="?android:attr/listDivider"
+        app:layout_constraintEnd_toEndOf="@+id/imageView"
+        app:layout_constraintStart_toStartOf="@+id/imageView"
+        app:layout_constraintTop_toBottomOf="@+id/changeBtn" />
+
+    <ImageView
+        android:id="@+id/announceImg"
+        android:layout_width="0dp"
+        android:layout_height="78dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
+        app:layout_constraintStart_toStartOf="@+id/imageView"
+        app:layout_constraintTop_toBottomOf="@+id/divider3"
+        app:srcCompat="@drawable/upnews" />
+
+    <TextView
+        android:id="@+id/textView29"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:text="Announcements"
+        android:textColor="#2B6777"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@+id/announceImg"
+        app:layout_constraintStart_toStartOf="@+id/announceImg"
+        app:layout_constraintTop_toBottomOf="@+id/announceImg" />
+
+    <TextView
+        android:id="@+id/textView30"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:text="Chats"
+        android:textColor="#2B6777"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@+id/imageView42"
+        app:layout_constraintStart_toStartOf="@+id/imageView42"
+        app:layout_constraintTop_toBottomOf="@+id/imageView42" />
+
+    <TextView
+        android:id="@+id/textView31"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:text="Request Forms"
+        android:textColor="#2B6777"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@+id/imageView43"
+        app:layout_constraintStart_toEndOf="@+id/imageView42"
+        app:layout_constraintTop_toBottomOf="@+id/imageView43" />
+
+    <ImageView
+        android:id="@+id/imageView42"
+        android:layout_width="0dp"
+        android:layout_height="78dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginEnd="5dp"
+        app:layout_constraintEnd_toStartOf="@+id/imageView43"
+        app:layout_constraintStart_toEndOf="@+id/announceImg"
+        app:layout_constraintTop_toTopOf="@+id/announceImg"
+        app:srcCompat="@drawable/upchat" />
+
+    <ImageView
+        android:id="@+id/imageView43"
+        android:layout_width="0dp"
+        android:layout_height="78dp"
+        android:layout_marginEnd="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/imageView42"
+        app:srcCompat="@drawable/uprequest" />
+
     <!--    <TextClock-->
-<!--        android:id="@+id/txtClock"-->
-<!--        android:layout_width="241dp"-->
-<!--        android:layout_height="27dp"-->
-<!--        android:layout_marginStart="156dp"-->
-<!--        android:layout_marginTop="72dp"-->
-<!--        android:format12Hour="hh:mm:ss a"-->
-<!--        android:textColor="#000000"-->
-<!--        android:textSize="18dp"-->
-<!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        app:layout_constraintTop_toTopOf="parent" />-->
+    <!--        android:id="@+id/txtClock"-->
+    <!--        android:layout_width="241dp"-->
+    <!--        android:layout_height="27dp"-->
+    <!--        android:layout_marginStart="156dp"-->
+    <!--        android:layout_marginTop="72dp"-->
+    <!--        android:format12Hour="hh:mm:ss a"-->
+    <!--        android:textColor="#000000"-->
+    <!--        android:textSize="18dp"-->
+    <!--        app:layout_constraintStart_toStartOf="parent"-->
+    <!--        app:layout_constraintTop_toTopOf="parent" />-->
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

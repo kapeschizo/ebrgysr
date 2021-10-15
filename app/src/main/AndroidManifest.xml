@@ -13,6 +13,9 @@
         android:theme="@style/Theme.EBSRV1"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".Announcement"
+            android:exported="true" />
+        <activity
             android:name=".AdminDashboard"
             android:exported="true" />
         <activity android:name=".ProfileImage" />

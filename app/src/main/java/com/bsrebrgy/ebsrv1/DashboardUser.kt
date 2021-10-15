@@ -1,11 +1,12 @@
 package com.bsrebrgy.ebsrv1
 
+import android.content.Intent
 import android.graphics.BitmapFactory
 import android.os.Bundle
-import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.graphics.drawable.RoundedBitmapDrawableFactory
 import com.android.volley.AuthFailureError
@@ -21,7 +22,7 @@ import java.util.*
 class DashboardUser : AppCompatActivity() {
     lateinit var session : SessionManager
     var user : String? = null
-    var logoutBtn : Button? = null
+    var logoutImg : ImageView? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -38,9 +39,26 @@ class DashboardUser : AppCompatActivity() {
         val logo = findViewById<ImageView>(R.id.userImg)
         logo.setImageDrawable(rounded)
 
-        logoutBtn = findViewById(R.id.logoutBtn)
-        logoutBtn?.setOnClickListener {
-            session.logoutUser()
+        logoutImg = findViewById(R.id.logoutImg)
+        logoutImg?.setOnClickListener {
+            val alertdialog : AlertDialog = AlertDialog.Builder(this).create()
+            alertdialog.setTitle("Exit Dialog")
+            alertdialog.setMessage("Do you want to Logout?")
+
+            alertdialog.setButton(AlertDialog.BUTTON_POSITIVE,"Yes") {
+                dialog, which -> session.logoutUser()
+                dialog.dismiss()}
+
+            alertdialog.setButton(AlertDialog.BUTTON_NEGATIVE,"No") {
+                    dialog, which ->
+                dialog.dismiss()}
+            alertdialog.show()
+
+            val announceImg = findViewById<ImageView>(R.id.announceImg)
+            announceImg.setOnClickListener {
+                val announcement = Intent(this,Announcement::class.java)
+                startActivity(announcement)
+            }
         }
     }
 
@@ -55,11 +73,15 @@ class DashboardUser : AppCompatActivity() {
                     val mname = jsonObject.getString("mname")
                     val lname = jsonObject.getString("lname")
                     val pimg = jsonObject.getString("pimg")
+                    val uemail = jsonObject.getString("email")
 
                     val urlimg = "http://www.barangaysanroqueantipolo.site/$pimg"
 
                     val fullNameTxt = findViewById<TextView>(R.id.fullNameTxt)
                     fullNameTxt.setText(fname+" "+mname+" "+lname)
+
+                    val emailTxt = findViewById<TextView>(R.id.emailTxt)
+                    emailTxt.setText(uemail)
 
                     val userImg = findViewById<ImageView>(R.id.userImg)
                     Picasso.with(this).load(urlimg).into(userImg)

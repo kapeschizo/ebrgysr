@@ -4,7 +4,11 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Users/theri/ebsrv1/app/src/main/res/layout/activity_admin_dashboard.xml" value="0.33055555555555555" />
+        <entry key="..\:/Users/theri/ebsrv1/app/src/main/res/layout/activity_announcement.xml" value="0.33055555555555555" />
         <entry key="..\:/Users/theri/ebsrv1/app/src/main/res/layout/activity_dashboard_user.xml" value="0.33055555555555555" />
+        <entry key="..\:/Users/theri/ebsrv1/app/src/main/res/layout/activity_intro.xml" value="0.33055555555555555" />
+        <entry key="..\:/Users/theri/ebsrv1/app/src/main/res/layout/activity_login.xml" value="0.33055555555555555" />
+        <entry key="..\:/Users/theri/ebsrv1/app/src/main/res/layout/activity_main.xml" value="0.33055555555555555" />
         <entry key="..\:/Users/theri/ebsrv1/app/src/main/res/layout/activity_profile.xml" value="0.33055555555555555" />
         <entry key="..\:/Users/theri/ebsrv1/app/src/main/res/layout/activity_profile_image.xml" value="0.33055555555555555" />
         <entry key="..\:/ebsrv1/app/src/main/res/layout/activity_admin_dashboard.xml" value="0.33" />
