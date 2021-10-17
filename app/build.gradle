@@ -47,5 +47,7 @@ dependencies {
     implementation "com.google.android.material:material:1.2.1"
     implementation 'com.karumi:dexter:6.2.2'
     implementation 'com.squareup.picasso:picasso:2.6.0-SNAPSHOT'
-    
+    implementation 'androidx.recyclerview:recyclerview:1.2.0'
+    implementation 'androidx.cardview:cardview:1.0.0'
+
 }

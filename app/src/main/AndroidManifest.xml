@@ -13,6 +13,15 @@
         android:theme="@style/Theme.EBSRV1"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".EmergencyReport"
+            android:exported="true" />
+        <activity
+            android:name=".ChangePicture"
+            android:exported="true" />
+        <activity
+            android:name=".Request"
+            android:exported="true" />
+        <activity
             android:name=".Announcement"
             android:exported="true" />
         <activity

@@ -32,7 +32,7 @@ class Login : AppCompatActivity() {
         session = SessionManager(this)
 
         if(session.isloggedin()){
-            val i : Intent = Intent(applicationContext, DashboardUser::class.java)
+            val i = Intent(applicationContext, DashboardUser::class.java)
             i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
             startActivity(i)
             finish()
@@ -97,8 +97,8 @@ class Login : AppCompatActivity() {
                             session.createdLoginSessions(user)
                             Toast.makeText(applicationContext, message, Toast.LENGTH_SHORT).show()
 
-                            val profileIntent = Intent(this, DashboardUser::class.java)
-                            startActivity(profileIntent)
+                            val dashboardIntent = Intent(this, DashboardUser::class.java)
+                            startActivity(dashboardIntent)
                         }
                         else
                         {

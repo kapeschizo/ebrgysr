@@ -3,6 +3,7 @@ package com.bsrebrgy.ebsrv1
 import android.content.Intent
 import android.graphics.BitmapFactory
 import android.os.Bundle
+import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
@@ -53,12 +54,27 @@ class DashboardUser : AppCompatActivity() {
                     dialog, which ->
                 dialog.dismiss()}
             alertdialog.show()
-
-            val announceImg = findViewById<ImageView>(R.id.announceImg)
-            announceImg.setOnClickListener {
-                val announcement = Intent(this,Announcement::class.java)
-                startActivity(announcement)
             }
+
+        val requestImg = findViewById<ImageView>(R.id.requestImg)
+        requestImg.setOnClickListener {
+            val request = Intent(this,Request::class.java)
+            startActivity(request)
+        }
+        val announceImg = findViewById<ImageView>(R.id.announceImg)
+        announceImg.setOnClickListener {
+            val announcement = Intent(this,Announcement::class.java)
+            startActivity(announcement)
+        }
+        val changeBtn = findViewById<Button>(R.id.changeBtn)
+        changeBtn.setOnClickListener {
+            val change = Intent(this,ChangePicture::class.java)
+            startActivity(change)
+        }
+        val emergImg = findViewById<ImageView>(R.id.emergImg)
+        emergImg.setOnClickListener {
+            val emergency = Intent(this, EmergencyReport::class.java)
+            startActivity(emergency)
         }
     }
 

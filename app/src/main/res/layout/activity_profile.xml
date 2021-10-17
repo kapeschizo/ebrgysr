@@ -6,7 +6,20 @@
     android:layout_height="match_parent"
     tools:context=".Profile">
 
+    <ImageView
+        android:id="@+id/imageView11"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:alpha="0.40"
+        android:scaleType="centerCrop"
+        app:layout_constraintBottom_toBottomOf="@+id/linearLayout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/bgopacity" />
+
     <LinearLayout
+        android:id="@+id/linearLayout"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:orientation="vertical"
@@ -24,7 +37,7 @@
             android:fontFamily="@font/catamaran"
             android:text="RESIDENT INFORMATION"
             android:textAlignment="center"
-            android:textColor="#0768B5"
+            android:textColor="#2B6777"
             android:textSize="35dp"
             android:textStyle="bold" />
 
@@ -43,14 +56,48 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_marginTop="5dp"
+                    android:textColorHint="#000000"
+                    app:boxCornerRadiusBottomEnd="10dp"
+                    app:boxCornerRadiusTopEnd="10dp"
+                    app:boxCornerRadiusBottomStart="10dp"
+                    app:boxCornerRadiusTopStart="10dp"
+                    android:alpha="0.80"
                     android:layout_marginBottom="5dp">
 
                     <EditText
                         android:id="@+id/fnameEtxt"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:backgroundTint="#2B6777"
                         android:ems="10"
                         android:hint="First Name *"
+                        android:inputType="textPersonName"
+                        android:textColor="#FFFFFF"
+                        android:textSize="20sp"
+                        tools:ignore="SpeakableTextPresentCheck" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="5dp"
+                    android:textColorHint="#000000"
+                    app:boxCornerRadiusBottomEnd="10dp"
+                    app:boxCornerRadiusTopEnd="10dp"
+                    app:boxCornerRadiusBottomStart="10dp"
+                    app:boxCornerRadiusTopStart="10dp"
+                    android:alpha="0.80"
+                    android:layout_marginBottom="5dp">
+
+                    <EditText
+                        android:id="@+id/mnameEtxt"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:ems="10"
+                        android:hint="Middle Name *"
+                        android:backgroundTint="#2B6777"
+                        android:textColor="#FFFFFF"
                         android:inputType="textPersonName"
                         android:textSize="20sp" />
 
@@ -60,23 +107,12 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_marginTop="5dp"
-                    android:layout_marginBottom="5dp">
-
-                    <EditText
-                        android:id="@+id/mnameEtxt"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:ems="10"
-                        android:inputType="textPersonName"
-                        android:hint="Middle Name *"
-                        android:textSize="20sp"/>
-
-                </com.google.android.material.textfield.TextInputLayout>
-
-                <com.google.android.material.textfield.TextInputLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_marginTop="5dp"
+                    android:textColorHint="#000000"
+                    app:boxCornerRadiusBottomEnd="10dp"
+                    app:boxCornerRadiusTopEnd="10dp"
+                    app:boxCornerRadiusBottomStart="10dp"
+                    app:boxCornerRadiusTopStart="10dp"
+                    android:alpha="0.80"
                     android:layout_marginBottom="5dp">
 
                     <EditText
@@ -84,9 +120,11 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:ems="10"
-                        android:inputType="textPersonName"
                         android:hint="Last Name *"
-                        android:textSize="20sp"/>
+                        android:backgroundTint="#2B6777"
+                        android:textColor="#FFFFFF"
+                        android:inputType="textPersonName"
+                        android:textSize="20sp" />
 
                 </com.google.android.material.textfield.TextInputLayout>
 
@@ -94,6 +132,12 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_marginTop="5dp"
+                    android:textColorHint="#000000"
+                    app:boxCornerRadiusBottomEnd="10dp"
+                    app:boxCornerRadiusTopEnd="10dp"
+                    app:boxCornerRadiusBottomStart="10dp"
+                    app:boxCornerRadiusTopStart="10dp"
+                    android:alpha="0.80"
                     android:layout_marginBottom="5dp">
 
                     <EditText
@@ -102,6 +146,8 @@
                         android:layout_height="wrap_content"
                         android:ems="10"
                         android:hint="Suffix (Extension Name)"
+                        android:backgroundTint="#2B6777"
+                        android:textColor="#FFFFFF"
                         android:inputType="textPersonName"
                         android:textSize="20sp" />
 
@@ -111,12 +157,12 @@
                     android:id="@+id/textView10"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginBottom="5dp"
                     android:layout_weight="1"
                     android:text="Sex *"
-                    android:textColor="#040404"
-                    android:textSize="20sp"
-                    android:layout_marginTop="5dp"
-                    android:layout_marginBottom="5dp"/>
+                    android:textColor="#2B6777"
+                    android:textSize="20sp" />
 
                 <RadioGroup
                     android:id="@+id/radioSexGroup"
@@ -129,14 +175,15 @@
                         android:id="@+id/radioMale"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginRight="40dp"
                         android:layout_marginLeft="40dp"
+                        android:layout_marginRight="40dp"
                         android:checked="true"
                         android:text="Male"
+                        android:textColor="#2B6777"
                         android:textColorHighlight="#070707"
                         android:textColorLink="#070707"
                         android:textSize="20sp"
-                        app:buttonTint="#020202" />
+                        app:buttonTint="#2B6777" />
 
                     <RadioButton
                         android:id="@+id/radioFemale"
@@ -144,8 +191,9 @@
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="40dp"
                         android:text="Female"
+                        android:textColor="#2B6777"
                         android:textSize="20sp"
-                        app:buttonTint="#040404" />
+                        app:buttonTint="#2B6777" />
 
                 </RadioGroup>
 
@@ -153,6 +201,12 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_marginTop="5dp"
+                    android:textColorHint="#000000"
+                    app:boxCornerRadiusBottomEnd="10dp"
+                    app:boxCornerRadiusTopEnd="10dp"
+                    app:boxCornerRadiusBottomStart="10dp"
+                    app:boxCornerRadiusTopStart="10dp"
+                    android:alpha="0.80"
                     android:layout_marginBottom="5dp">
 
                     <EditText
@@ -160,9 +214,12 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:ems="10"
-                        android:inputType="textPersonName"
                         android:hint="Maiden Name"
-                        android:textSize="20sp"/>
+                        android:inputType="textPersonName"
+                        android:backgroundTint="#2B6777"
+                        android:textColor="#FFFFFF"
+                        android:textSize="20sp"
+                        tools:ignore="SpeakableTextPresentCheck" />
 
                 </com.google.android.material.textfield.TextInputLayout>
 
@@ -170,6 +227,12 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_marginTop="5dp"
+                    android:textColorHint="#000000"
+                    app:boxCornerRadiusBottomEnd="10dp"
+                    app:boxCornerRadiusTopEnd="10dp"
+                    app:boxCornerRadiusBottomStart="10dp"
+                    app:boxCornerRadiusTopStart="10dp"
+                    android:alpha="0.80"
                     android:layout_marginBottom="5dp">
 
                     <EditText
@@ -179,8 +242,11 @@
                         android:ems="10"
                         android:enabled="false"
                         android:hint="Birthdate *"
+                        android:backgroundTint="#2B6777"
+                        android:textColor="#FFFFFF"
                         android:inputType="date"
-                        android:textSize="20sp" />
+                        android:textSize="20sp"
+                        tools:ignore="SpeakableTextPresentCheck" />
 
                 </com.google.android.material.textfield.TextInputLayout>
 
@@ -190,14 +256,20 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
                     android:layout_marginBottom="5dp"
-                    android:background="#0E8DF1"
                     android:text="Choose Date"
-                    app:backgroundTint="#146AAE" />
+                    app:backgroundTint="#0499C1"
+                    tools:ignore="TextContrastCheck" />
 
                 <com.google.android.material.textfield.TextInputLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_marginTop="5dp"
+                    android:textColorHint="#000000"
+                    app:boxCornerRadiusBottomEnd="10dp"
+                    app:boxCornerRadiusTopEnd="10dp"
+                    app:boxCornerRadiusBottomStart="10dp"
+                    app:boxCornerRadiusTopStart="10dp"
+                    android:alpha="0.80"
                     android:layout_marginBottom="5dp">
 
                     <EditText
@@ -207,7 +279,10 @@
                         android:ems="10"
                         android:hint="Age *"
                         android:inputType="number"
-                        android:textSize="20sp" />
+                        android:backgroundTint="#2B6777"
+                        android:textColor="#FFFFFF"
+                        android:textSize="20sp"
+                        tools:ignore="SpeakableTextPresentCheck" />
 
                 </com.google.android.material.textfield.TextInputLayout>
 
@@ -215,6 +290,12 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_marginTop="5dp"
+                    android:textColorHint="#000000"
+                    app:boxCornerRadiusBottomEnd="10dp"
+                    app:boxCornerRadiusTopEnd="10dp"
+                    app:boxCornerRadiusBottomStart="10dp"
+                    app:boxCornerRadiusTopStart="10dp"
+                    android:alpha="0.80"
                     android:layout_marginBottom="5dp">
 
                     <EditText
@@ -223,6 +304,8 @@
                         android:layout_height="wrap_content"
                         android:ems="10"
                         android:hint="Birth Place *"
+                        android:backgroundTint="#2B6777"
+                        android:textColor="#FFFFFF"
                         android:inputType="textPersonName"
                         android:textSize="20sp" />
 
@@ -232,6 +315,12 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_marginTop="5dp"
+                    android:textColorHint="#000000"
+                    app:boxCornerRadiusBottomEnd="10dp"
+                    app:boxCornerRadiusTopEnd="10dp"
+                    app:boxCornerRadiusBottomStart="10dp"
+                    app:boxCornerRadiusTopStart="10dp"
+                    android:alpha="0.80"
                     android:layout_marginBottom="5dp">
 
                     <EditText
@@ -240,6 +329,8 @@
                         android:layout_height="wrap_content"
                         android:ems="10"
                         android:hint="Mobile Number *"
+                        android:backgroundTint="#2B6777"
+                        android:textColor="#FFFFFF"
                         android:inputType="number"
                         android:textSize="20sp" />
 
@@ -252,7 +343,7 @@
                     android:fontFamily="@font/catamaran"
                     android:text="HOME ADDRESS"
                     android:textAlignment="center"
-                    android:textColor="#0F72C1"
+                    android:textColor="#2B6777"
                     android:textSize="30sp"
                     android:textStyle="bold" />
 
@@ -260,6 +351,12 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_marginTop="5dp"
+                    android:textColorHint="#000000"
+                    app:boxCornerRadiusBottomEnd="10dp"
+                    app:boxCornerRadiusTopEnd="10dp"
+                    app:boxCornerRadiusBottomStart="10dp"
+                    app:boxCornerRadiusTopStart="10dp"
+                    android:alpha="0.80"
                     android:layout_marginBottom="5dp">
 
                     <EditText
@@ -268,6 +365,8 @@
                         android:layout_height="wrap_content"
                         android:ems="10"
                         android:hint="House Number/Street *"
+                        android:backgroundTint="#2B6777"
+                        android:textColor="#FFFFFF"
                         android:inputType="textPersonName"
                         android:textSize="20sp" />
 
@@ -277,12 +376,12 @@
                     android:id="@+id/textView11"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginBottom="5dp"
                     android:layout_weight="1"
                     android:text="Purok *"
-                    android:textColor="#040404"
-                    android:textSize="20sp"
-                    android:layout_marginTop="5dp"
-                    android:layout_marginBottom="5dp"/>
+                    android:textColor="#2B6777"
+                    android:textSize="20sp" />
 
                 <com.google.android.material.textfield.TextInputLayout
                     android:layout_width="match_parent"
@@ -305,6 +404,12 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_marginTop="5dp"
+                    android:textColorHint="#000000"
+                    app:boxCornerRadiusBottomEnd="10dp"
+                    app:boxCornerRadiusTopEnd="10dp"
+                    app:boxCornerRadiusBottomStart="10dp"
+                    app:boxCornerRadiusTopStart="10dp"
+                    android:alpha="0.80"
                     android:layout_marginBottom="5dp">
 
                     <EditText
@@ -312,10 +417,12 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:ems="10"
-                        android:text="San Roque"
                         android:enabled="false"
-                        android:hint="Barangay *"
+                        android:hint="Barangay "
                         android:inputType="textPersonName"
+                        android:text="San Roque"
+                        android:backgroundTint="#2B6777"
+                        android:textColor="#FFFFFF"
                         android:textSize="20sp" />
 
                 </com.google.android.material.textfield.TextInputLayout>
@@ -324,6 +431,12 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_marginTop="5dp"
+                    android:textColorHint="#000000"
+                    app:boxCornerRadiusBottomEnd="10dp"
+                    app:boxCornerRadiusTopEnd="10dp"
+                    app:boxCornerRadiusBottomStart="10dp"
+                    app:boxCornerRadiusTopStart="10dp"
+                    android:alpha="0.80"
                     android:layout_marginBottom="5dp">
 
                     <EditText
@@ -331,10 +444,12 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:ems="10"
-                        android:text="Antipolo"
-                        android:hint="Municipality *"
                         android:enabled="false"
+                        android:hint="Municipality "
                         android:inputType="textPersonName"
+                        android:text="Antipolo"
+                        android:backgroundTint="#2B6777"
+                        android:textColor="#FFFFFF"
                         android:textSize="20sp" />
 
                 </com.google.android.material.textfield.TextInputLayout>
@@ -343,6 +458,12 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_marginTop="5dp"
+                    android:textColorHint="#000000"
+                    app:boxCornerRadiusBottomEnd="10dp"
+                    app:boxCornerRadiusTopEnd="10dp"
+                    app:boxCornerRadiusBottomStart="10dp"
+                    app:boxCornerRadiusTopStart="10dp"
+                    android:alpha="0.80"
                     android:layout_marginBottom="5dp">
 
                     <EditText
@@ -350,10 +471,12 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:ems="10"
-                        android:text="Rizal"
-                        android:hint="Province *"
                         android:enabled="false"
+                        android:hint="Province "
                         android:inputType="textPersonName"
+                        android:text="Rizal"
+                        android:backgroundTint="#2B6777"
+                        android:textColor="#FFFFFF"
                         android:textSize="20sp" />
 
                 </com.google.android.material.textfield.TextInputLayout>
@@ -362,6 +485,12 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_marginTop="5dp"
+                    android:textColorHint="#000000"
+                    app:boxCornerRadiusBottomEnd="10dp"
+                    app:boxCornerRadiusTopEnd="10dp"
+                    app:boxCornerRadiusBottomStart="10dp"
+                    app:boxCornerRadiusTopStart="10dp"
+                    android:alpha="0.80"
                     android:layout_marginBottom="5dp">
 
                     <EditText
@@ -369,10 +498,12 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:ems="10"
-                        android:text="1870"
-                        android:hint="ZipCode *"
                         android:enabled="false"
+                        android:hint="ZipCode "
                         android:inputType="number"
+                        android:text="1870"
+                        android:backgroundTint="#2B6777"
+                        android:textColor="#FFFFFF"
                         android:textSize="20sp" />
 
                 </com.google.android.material.textfield.TextInputLayout>
@@ -384,7 +515,7 @@
                     android:fontFamily="@font/catamaran"
                     android:text="OTHER DETAILS"
                     android:textAlignment="center"
-                    android:textColor="#0F72C1"
+                    android:textColor="#2B6777"
                     android:textSize="30sp"
                     android:textStyle="bold" />
 
@@ -392,12 +523,12 @@
                     android:id="@+id/textView12"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginBottom="5dp"
                     android:layout_weight="1"
                     android:text="Civil Status *"
-                    android:textColor="#040404"
-                    android:textSize="20sp"
-                    android:layout_marginTop="5dp"
-                    android:layout_marginBottom="5dp"/>
+                    android:textColor="#2B6777"
+                    android:textSize="20sp" />
 
                 <com.google.android.material.textfield.TextInputLayout
                     android:layout_width="match_parent"
@@ -409,9 +540,9 @@
                         android:id="@+id/spinnerCivilStat"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:textSize="20dp"
                         android:layout_marginTop="5dp"
-                        android:layout_marginBottom="5dp"/>
+                        android:layout_marginBottom="5dp"
+                        android:textSize="20dp" />
 
                 </com.google.android.material.textfield.TextInputLayout>
 
@@ -419,11 +550,11 @@
                     android:id="@+id/textView13"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="Employment Status *"
-                    android:textColor="#040404"
                     android:layout_marginTop="5dp"
                     android:layout_marginBottom="5dp"
+                    android:layout_weight="1"
+                    android:text="Employment Status *"
+                    android:textColor="#2B6777"
                     android:textSize="20sp" />
 
                 <com.google.android.material.textfield.TextInputLayout
@@ -436,9 +567,9 @@
                         android:id="@+id/spinnerEmpStat"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:textSize="20dp"
                         android:layout_marginTop="5dp"
-                        android:layout_marginBottom="5dp"/>
+                        android:layout_marginBottom="5dp"
+                        android:textSize="20dp" />
 
                 </com.google.android.material.textfield.TextInputLayout>
 
@@ -446,6 +577,12 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_marginTop="5dp"
+                    android:textColorHint="#000000"
+                    app:boxCornerRadiusBottomEnd="10dp"
+                    app:boxCornerRadiusTopEnd="10dp"
+                    app:boxCornerRadiusBottomStart="10dp"
+                    app:boxCornerRadiusTopStart="10dp"
+                    android:alpha="0.80"
                     android:layout_marginBottom="5dp">
 
                     <EditText
@@ -454,6 +591,8 @@
                         android:layout_height="wrap_content"
                         android:ems="10"
                         android:hint="Occupation *"
+                        android:backgroundTint="#2B6777"
+                        android:textColor="#FFFFFF"
                         android:inputType="textPersonName"
                         android:textSize="20sp" />
 
@@ -463,6 +602,12 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_marginTop="5dp"
+                    android:textColorHint="#000000"
+                    app:boxCornerRadiusBottomEnd="10dp"
+                    app:boxCornerRadiusTopEnd="10dp"
+                    app:boxCornerRadiusBottomStart="10dp"
+                    app:boxCornerRadiusTopStart="10dp"
+                    android:alpha="0.80"
                     android:layout_marginBottom="5dp">
 
                     <EditText
@@ -470,9 +615,11 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:ems="10"
-                        android:inputType="number"
                         android:hint="Monthly Income *"
-                        android:textSize="20sp"/>
+                        android:inputType="number"
+                        android:backgroundTint="#2B6777"
+                        android:textColor="#FFFFFF"
+                        android:textSize="20sp" />
 
                 </com.google.android.material.textfield.TextInputLayout>
 
@@ -480,6 +627,12 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_marginTop="5dp"
+                    android:textColorHint="#000000"
+                    app:boxCornerRadiusBottomEnd="10dp"
+                    app:boxCornerRadiusTopEnd="10dp"
+                    app:boxCornerRadiusBottomStart="10dp"
+                    app:boxCornerRadiusTopStart="10dp"
+                    android:alpha="0.80"
                     android:layout_marginBottom="5dp">
 
                     <EditText
@@ -487,9 +640,11 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:ems="10"
-                        android:inputType="textPersonName"
                         android:hint="Religion *"
-                        android:textSize="20sp"/>
+                        android:backgroundTint="#2B6777"
+                        android:textColor="#FFFFFF"
+                        android:inputType="textPersonName"
+                        android:textSize="20sp" />
 
                 </com.google.android.material.textfield.TextInputLayout>
 
@@ -497,6 +652,12 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_marginTop="5dp"
+                    android:textColorHint="#000000"
+                    app:boxCornerRadiusBottomEnd="10dp"
+                    app:boxCornerRadiusTopEnd="10dp"
+                    app:boxCornerRadiusBottomStart="10dp"
+                    app:boxCornerRadiusTopStart="10dp"
+                    android:alpha="0.80"
                     android:layout_marginBottom="5dp">
 
                     <EditText
@@ -504,9 +665,11 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:ems="10"
-                        android:inputType="textPersonName"
                         android:hint="Nationality *"
-                        android:textSize="20sp"/>
+                        android:backgroundTint="#2B6777"
+                        android:textColor="#FFFFFF"
+                        android:inputType="textPersonName"
+                        android:textSize="20sp" />
 
                 </com.google.android.material.textfield.TextInputLayout>
 
@@ -516,13 +679,12 @@
                     android:layout_height="70dp"
                     android:layout_marginTop="20dp"
                     android:layout_marginBottom="25dp"
-                    android:background="#0E8DF1"
                     android:fontFamily="@font/catamaran"
                     android:text="NEXT"
                     android:textAlignment="center"
                     android:textSize="24sp"
                     android:textStyle="bold"
-                    app:backgroundTint="#146AAE" />
+                    app:backgroundTint="#0499C1" />
 
             </LinearLayout>
 

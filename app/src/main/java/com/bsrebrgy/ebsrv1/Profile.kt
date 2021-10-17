@@ -72,7 +72,8 @@ class Profile : AppCompatActivity() {
             val datePicker = DatePickerDialog(
                 this,
                 { view, year, month, dayOfMonth ->
-                    dateEtxt?.setText(year.toString() + "-" + month.toString() + "-" + dayOfMonth.toString())
+                    val mon = month+1
+                    dateEtxt?.setText(year.toString() + "-" + mon.toString() + "-" + dayOfMonth.toString())
                 }, y, m, d)
             datePicker.show()
         }

@@ -46,9 +46,13 @@ class SessionManager {
     fun logoutUser() {
         editor.clear()
         editor.commit()
-        var i: Intent = Intent(con, MainActivity::class.java)
-        i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
-        i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+        var i = Intent(con, MainActivity::class.java)
+        i.putExtra("finish", true) // if you are checking for this in your other Activities
+        i.setFlags(
+            Intent.FLAG_ACTIVITY_CLEAR_TOP or
+            Intent.FLAG_ACTIVITY_CLEAR_TASK or
+            Intent.FLAG_ACTIVITY_NEW_TASK
+        )
         con.startActivity(i)
     }
 

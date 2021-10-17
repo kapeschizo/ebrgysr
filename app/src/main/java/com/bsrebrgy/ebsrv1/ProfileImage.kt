@@ -9,8 +9,10 @@ import android.util.Base64
 import android.view.View
 import android.view.WindowManager
 import android.widget.*
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import com.android.volley.AuthFailureError
+import com.android.volley.DefaultRetryPolicy
 import com.android.volley.Response
 import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
@@ -107,11 +109,11 @@ class ProfileImage : AppCompatActivity() {
         val religion = bundle?.getString("religion")
         val nation = bundle?.getString("nation")
 
-        fnameTv = findViewById(R.id.fnameTv)
+        fnameTv = findViewById(R.id.fnameTview)
         fnameTv?.text = fname
-        mnameTv = findViewById(R.id.mnameTv)
+        mnameTv = findViewById(R.id.mnameTview)
         mnameTv?.text = mname
-        lnameTv = findViewById(R.id.lnameTv)
+        lnameTv = findViewById(R.id.lnameTview)
         lnameTv?.text = lname
         extnameTv = findViewById(R.id.extnameTv)
         extnameTv?.text = extname
@@ -127,17 +129,17 @@ class ProfileImage : AppCompatActivity() {
         bplaceTv?.text = bplace
         moboTv = findViewById(R.id.moboTv)
         moboTv?.text = mobo
-        houseTv = findViewById(R.id.houseTv)
+        houseTv = findViewById(R.id.addTview)
         houseTv?.text = house
-        sitioTv = findViewById(R.id.sitioTv)
+        sitioTv = findViewById(R.id.sitioTview)
         sitioTv?.text = sitio
-        brgyTv = findViewById(R.id.brgyTv)
+        brgyTv = findViewById(R.id.brgyTview)
         brgyTv?.text = brgy
-        munTv = findViewById(R.id.munTv)
+        munTv = findViewById(R.id.munTview)
         munTv?.text = mun
-        provTv = findViewById(R.id.provTv)
+        provTv = findViewById(R.id.provTview)
         provTv?.text = prov
-        zipTv = findViewById(R.id.zipTv)
+        zipTv = findViewById(R.id.zipTview)
         zipTv?.text = zip
         civilTv = findViewById(R.id.civilTv)
         civilTv?.text = civil
@@ -160,7 +162,6 @@ class ProfileImage : AppCompatActivity() {
         cameraBtn3 = findViewById(R.id.cameraBtn3)
         cameraIview4 = findViewById(R.id.cameraIview4)
         cameraBtn4 = findViewById(R.id.cameraBtn4)
-
 
         cameraBtn?.setOnClickListener {
             Dexter.withContext(applicationContext)
@@ -252,7 +253,20 @@ class ProfileImage : AppCompatActivity() {
         }
 
         nextProfBtn = findViewById(R.id.nextProfBtn)
-        nextProfBtn?.setOnClickListener { uploadtoserver() }
+        nextProfBtn?.setOnClickListener {
+            val alertdialog : AlertDialog = AlertDialog.Builder(this).create()
+            alertdialog.setTitle("Are You Sure")
+            alertdialog.setMessage("Do you want to Submit")
+
+            alertdialog.setButton(AlertDialog.BUTTON_POSITIVE,"Yes") {
+                    dialog, which -> uploadtoserver()
+                dialog.dismiss()}
+
+            alertdialog.setButton(AlertDialog.BUTTON_NEGATIVE,"No") {
+                    dialog, which ->
+                dialog.dismiss()}
+            alertdialog.show()
+        }
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
@@ -337,8 +351,8 @@ class ProfileImage : AppCompatActivity() {
                 object : StringRequest(Method.POST, url, Response.Listener { response ->
                     Toast.makeText(applicationContext, "File Uploaded Successfully", Toast.LENGTH_SHORT).show()
 
-                    val profileIntent = Intent(this, DashboardUser::class.java)
-                    startActivity(profileIntent)
+                    val dashboardIntent = Intent(this, DashboardUser::class.java)
+                    startActivity(dashboardIntent)
 
                 },
                     Response.ErrorListener { error ->
@@ -379,6 +393,11 @@ class ProfileImage : AppCompatActivity() {
                         return map
                     }
                 }
+                    request.retryPolicy = DefaultRetryPolicy(
+                    0,
+                    DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
+                    DefaultRetryPolicy.DEFAULT_BACKOFF_MULT
+                )
             val queue = Volley.newRequestQueue(applicationContext)
             queue.add(request)
         }

@@ -51,7 +51,7 @@
                         android:text="First Name: " />
 
                     <TextView
-                        android:id="@+id/fnameTv"
+                        android:id="@+id/fnameTview"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/catamaran"
@@ -80,7 +80,7 @@
                         android:text="Middle Name: " />
 
                     <TextView
-                        android:id="@+id/mnameTv"
+                        android:id="@+id/mnameTview"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/catamaran"
@@ -109,7 +109,7 @@
                         android:text="Last Name: " />
 
                     <TextView
-                        android:id="@+id/lnameTv"
+                        android:id="@+id/lnameTview"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/catamaran"
@@ -341,7 +341,7 @@
                         android:text="House Number/Street: " />
 
                     <TextView
-                        android:id="@+id/houseTv"
+                        android:id="@+id/addTview"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/catamaran"
@@ -370,7 +370,7 @@
                         android:text="Sitio: " />
 
                     <TextView
-                        android:id="@+id/sitioTv"
+                        android:id="@+id/sitioTview"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/catamaran"
@@ -399,7 +399,7 @@
                         android:text="Barangay: " />
 
                     <TextView
-                        android:id="@+id/brgyTv"
+                        android:id="@+id/brgyTview"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/catamaran"
@@ -428,7 +428,7 @@
                         android:text="Municipality: " />
 
                     <TextView
-                        android:id="@+id/munTv"
+                        android:id="@+id/munTview"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/catamaran"
@@ -457,7 +457,7 @@
                         android:text="Province: " />
 
                     <TextView
-                        android:id="@+id/provTv"
+                        android:id="@+id/provTview"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/catamaran"
@@ -486,7 +486,7 @@
                         android:text="Zip Code: " />
 
                     <TextView
-                        android:id="@+id/zipTv"
+                        android:id="@+id/zipTview"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/catamaran"
