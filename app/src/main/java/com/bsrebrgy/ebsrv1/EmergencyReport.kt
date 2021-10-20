@@ -97,7 +97,7 @@ class EmergencyReport : AppCompatActivity() {
         val request: StringRequest =
             object : StringRequest(
                 Method.POST, url, Response.Listener { response ->
-                    Toast.makeText(applicationContext, "File Uploaded Successfully", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(applicationContext, "Emergency Report Submitted", Toast.LENGTH_SHORT).show()
 
                     val dashboardIntent = Intent(this, DashboardUser::class.java)
                     startActivity(dashboardIntent)
@@ -122,7 +122,6 @@ class EmergencyReport : AppCompatActivity() {
             DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
             DefaultRetryPolicy.DEFAULT_BACKOFF_MULT
         )
-
         val queue = Volley.newRequestQueue(applicationContext)
         queue.add(request)
     }

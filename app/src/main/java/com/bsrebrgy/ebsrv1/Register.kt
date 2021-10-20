@@ -56,7 +56,7 @@ class Register : AppCompatActivity() {
                         val loginIntent = Intent(this, Login::class.java)
                         startActivity(loginIntent)
 
-                        Toast.makeText(applicationContext,"Registered Successful",Toast.LENGTH_SHORT).show()
+                        Toast.makeText(applicationContext,"Registered Successful! Please Check your Email for the Password",Toast.LENGTH_LONG).show()
                     }
                     else
                     {

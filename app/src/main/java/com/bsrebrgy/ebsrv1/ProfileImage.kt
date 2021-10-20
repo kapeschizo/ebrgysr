@@ -349,11 +349,8 @@ class ProfileImage : AppCompatActivity() {
             val encodedimage4 = encodedimage4.toString().trim { it <= ' ' }
             val request: StringRequest =
                 object : StringRequest(Method.POST, url, Response.Listener { response ->
-                    Toast.makeText(applicationContext, "File Uploaded Successfully", Toast.LENGTH_SHORT).show()
-
-                    val dashboardIntent = Intent(this, DashboardUser::class.java)
-                    startActivity(dashboardIntent)
-
+                    Toast.makeText(applicationContext, "Profile Updated! Wait for Account Approval", Toast.LENGTH_LONG).show()
+                    session.logoutUser()
                 },
                     Response.ErrorListener { error ->
                         Toast.makeText(applicationContext, error.toString(), Toast.LENGTH_SHORT).show()

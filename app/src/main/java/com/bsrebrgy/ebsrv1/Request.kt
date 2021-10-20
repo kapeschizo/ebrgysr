@@ -196,11 +196,6 @@ class Request : AppCompatActivity() {
                     return map
                 }
             }
-        request.retryPolicy = DefaultRetryPolicy(
-            0,
-            DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
-            DefaultRetryPolicy.DEFAULT_BACKOFF_MULT
-        )
         val queue = Volley.newRequestQueue(applicationContext)
         queue.add(request)
 
@@ -220,7 +215,7 @@ class Request : AppCompatActivity() {
         val docus: String = docus!!.toString().trim { it <= ' ' }
         val request: StringRequest =
             object : StringRequest(Method.POST, url, Response.Listener { response ->
-                Toast.makeText(applicationContext, "Request Subimitted Successfully", Toast.LENGTH_SHORT).show()
+                Toast.makeText(applicationContext, "Request Submitted Successfully", Toast.LENGTH_SHORT).show()
 
                 val dashboardIntent = Intent(this, DashboardUser::class.java)
                 startActivity(dashboardIntent)

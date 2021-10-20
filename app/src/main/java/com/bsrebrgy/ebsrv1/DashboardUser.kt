@@ -3,6 +3,7 @@ package com.bsrebrgy.ebsrv1
 import android.content.Intent
 import android.graphics.BitmapFactory
 import android.os.Bundle
+import android.view.KeyEvent
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
@@ -130,5 +131,11 @@ class DashboardUser : AppCompatActivity() {
     override fun onResume() {
         super.onResume()
         getUserDetails()
+    }
+
+    override fun onKeyDown(keyCode: Int, event: KeyEvent?): Boolean {
+        return if (keyCode == KeyEvent.KEYCODE_BACK) {
+            false
+        } else super.onKeyDown(keyCode, event)
     }
 }

@@ -13,6 +13,9 @@
         android:theme="@style/Theme.EBSRV1"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".Chat"
+            android:exported="true" />
+        <activity
             android:name=".EmergencyReport"
             android:exported="true" />
         <activity

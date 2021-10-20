@@ -79,14 +79,7 @@ class Login : AppCompatActivity() {
                         val success = jsonObject.getString("success")
                         val message = jsonObject.getString("message")
 
-                        if (success == "0")
-                        {
-                            session.createdLoginSessions(user)
-                            Toast.makeText(applicationContext, message, Toast.LENGTH_SHORT).show()
-                            val adminIntent = Intent(this,AdminDashboard::class.java)
-                            startActivity(adminIntent)
-                        }
-                        else if (success == "2") {
+                        if (success == "2") {
                             Toast.makeText(applicationContext, message, Toast.LENGTH_SHORT).show()
                             session.createdLoginSessions(user)
                             val profileIntent = Intent(this, Profile::class.java)
@@ -109,7 +102,7 @@ class Login : AppCompatActivity() {
 
                     } catch (e: JSONException) {
                         e.printStackTrace()
-                        Toast.makeText(applicationContext, "Register Error! $e", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(applicationContext, "Register Error! $e", Toast.LENGTH_LONG).show()
                         loadinglogin?.visibility = View.GONE
                         loginBtn?.visibility = View.VISIBLE
                     }
