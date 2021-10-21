@@ -369,7 +369,7 @@
                 android:layout_height="wrap_content"
                 android:ems="10"
                 android:inputType="textPersonName"
-                android:text="Purpose" />
+                android:hint="Purpose" />
 
             <TextView
                 android:id="@+id/textView215"

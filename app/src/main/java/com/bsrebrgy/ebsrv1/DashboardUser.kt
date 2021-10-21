@@ -62,6 +62,11 @@ class DashboardUser : AppCompatActivity() {
             val request = Intent(this,Request::class.java)
             startActivity(request)
         }
+        val chatImg = findViewById<ImageView>(R.id.chatImg)
+        chatImg.setOnClickListener {
+            val chat = Intent(this, Chat::class.java)
+            startActivity(chat)
+        }
         val announceImg = findViewById<ImageView>(R.id.announceImg)
         announceImg.setOnClickListener {
             val announcement = Intent(this,Announcement::class.java)

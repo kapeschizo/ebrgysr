@@ -241,6 +241,28 @@
         app:layout_constraintStart_toStartOf="@+id/emergImg"
         app:layout_constraintTop_toBottomOf="@+id/emergImg" />
 
+    <ImageView
+        android:id="@+id/chatImg"
+        android:layout_width="wrap_content"
+        android:layout_height="78dp"
+        android:layout_marginTop="30dp"
+        app:layout_constraintEnd_toEndOf="@+id/imageView15"
+        app:layout_constraintStart_toStartOf="@+id/imageView15"
+        app:layout_constraintTop_toBottomOf="@+id/textView23"
+        app:srcCompat="@drawable/upchat" />
+
+    <TextView
+        android:id="@+id/textView34"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:text="Chats"
+        android:textColor="#2B6777"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@+id/chatImg"
+        app:layout_constraintStart_toStartOf="@+id/chatImg"
+        app:layout_constraintTop_toBottomOf="@+id/chatImg" />
+
     <!--    <TextClock-->
     <!--        android:id="@+id/txtClock"-->
     <!--        android:layout_width="241dp"-->
