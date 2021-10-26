@@ -82,6 +82,11 @@ class DashboardUser : AppCompatActivity() {
             val emergency = Intent(this, EmergencyReport::class.java)
             startActivity(emergency)
         }
+        val hotlineImg = findViewById<ImageView>(R.id.hotlineImg)
+        hotlineImg.setOnClickListener {
+            val hotline = Intent(this, Hotlines::class.java)
+            startActivity(hotline)
+        }
     }
 
     private fun getUserDetails() {

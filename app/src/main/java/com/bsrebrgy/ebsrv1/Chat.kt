@@ -26,8 +26,7 @@ class Chat : AppCompatActivity() {
     var requestQueue: RequestQueue? = null
     var txtMsg: EditText? = null
     var sendBtn : Button? = null
-    //Here you can change timer interval oke.:)
-    val howManySecondsToRefresh:Long = 5000
+    val howManySecondsToRefresh : Long = 5000
 
     override fun onCreate(savedInstanceState: Bundle?) {
 
@@ -57,7 +56,7 @@ class Chat : AppCompatActivity() {
                 loadChats()
                 time += 1000
                 h.postDelayed(this, howManySecondsToRefresh)
-//                Log.d("K3xri","Updating RecyclerView")
+//              Log.d("K3xri","Updating RecyclerView")
             }
         }, howManySecondsToRefresh)
         txtMsg = findViewById(R.id.txtMsg)
@@ -109,6 +108,7 @@ class Chat : AppCompatActivity() {
             object : StringRequest(
                 Method.POST, url, Response.Listener { response ->
                     Toast.makeText(applicationContext, "Message Sent", Toast.LENGTH_SHORT).show()
+                    txtMsg?.setText("")
 
                 },
                 Response.ErrorListener { error ->
