@@ -84,8 +84,8 @@ class DashboardUser : AppCompatActivity() {
         }
         val hotlineImg = findViewById<ImageView>(R.id.hotlineImg)
         hotlineImg.setOnClickListener {
-            val hotline = Intent(this, Hotlines::class.java)
-            startActivity(hotline)
+            val hotem = Intent(this, EmergencyHotline::class.java)
+            startActivity(hotem)
         }
     }
 

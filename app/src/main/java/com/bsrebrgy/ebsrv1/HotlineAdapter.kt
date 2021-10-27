@@ -50,7 +50,7 @@ class HotlineAdapter(private val mCtx: Context, private val hotlinelist: List<Hl
                 .withListener(object : PermissionListener {
                     override fun onPermissionGranted(permissionGrantedResponse: PermissionGrantedResponse) {
                         val intent = Intent(Intent.ACTION_CALL)
-                        intent.setData(Uri.parse("tel:" + hline.hnum))
+                        intent.setData(Uri.parse("tel:+" + hline.hnum))
                         mCtx.startActivity(intent)
                     }
 
