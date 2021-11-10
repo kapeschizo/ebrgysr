@@ -23,13 +23,15 @@
     <TextView
         android:id="@+id/textView32"
         android:layout_width="0dp"
-        android:layout_height="40dp"
+        android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="32dp"
         android:layout_marginEnd="24dp"
         android:background="@drawable/rectangle_border"
+        android:padding="5dp"
         android:text="EMERGENCY REPORT"
         android:textAlignment="center"
+        android:textColor="#2B6777"
         android:textSize="26sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
@@ -39,9 +41,10 @@
     <ImageView
         android:id="@+id/emergCam"
         android:layout_width="0dp"
-        android:layout_height="238dp"
-        android:layout_marginTop="16dp"
+        android:layout_height="220dp"
+        android:layout_marginTop="8dp"
         app:layout_constraintEnd_toEndOf="@+id/textView32"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/textView32"
         app:layout_constraintTop_toBottomOf="@+id/textView32" />
 
@@ -50,7 +53,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
+        android:background="#2B6777"
         android:text="OPEN CAMERA"
+        app:backgroundTint="#2B6777"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.501"
         app:layout_constraintStart_toStartOf="parent"
@@ -59,8 +64,9 @@
     <EditText
         android:id="@+id/descTxt"
         android:layout_width="0dp"
-        android:layout_height="130dp"
-        android:layout_marginTop="16dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
         android:background="@drawable/rectangle_border"
         android:gravity="start|top"
         android:hint="Description"
@@ -68,16 +74,17 @@
         android:importantForAutofill="no"
         android:inputType="textMultiLine"
         android:padding="12dp"
+        app:layout_constraintBottom_toTopOf="@+id/emergsubBtn"
         app:layout_constraintEnd_toEndOf="@+id/emergCam"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/emergCam"
-        app:layout_constraintTop_toBottomOf="@+id/locTxt" />
+        app:layout_constraintTop_toBottomOf="@+id/lvlBtn" />
 
     <EditText
         android:id="@+id/locTxt"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="4dp"
         android:ems="10"
         android:hint="Location"
         android:inputType="textPersonName"
@@ -89,15 +96,64 @@
 
     <Button
         android:id="@+id/emergsubBtn"
-        android:layout_width="162dp"
-        android:layout_height="71dp"
-        android:layout_marginTop="10dp"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginBottom="8dp"
+        android:background="#2B6777"
         android:text="REPORT"
         android:textSize="18sp"
+        app:backgroundTint="#2B6777"
         app:layout_constraintBottom_toBottomOf="@+id/imageView18"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/descTxt"
-        app:layout_constraintVertical_bias="0.021" />
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Spinner
+        android:id="@+id/lvlSpin"
+        android:layout_width="308dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        app:layout_constraintEnd_toStartOf="@+id/lvlBtn"
+        app:layout_constraintStart_toStartOf="@+id/dateTime"
+        app:layout_constraintTop_toBottomOf="@+id/dateButton"
+        tools:ignore="SpeakableTextPresentCheck" />
+
+    <EditText
+        android:id="@+id/dateTime"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="8dp"
+        android:ems="10"
+        android:enabled="false"
+        android:hint="Date/Time"
+        android:inputType="datetime"
+        android:minHeight="48dp"
+        app:layout_constraintEnd_toStartOf="@+id/dateButton"
+        app:layout_constraintStart_toStartOf="@+id/locTxt"
+        app:layout_constraintTop_toBottomOf="@+id/locTxt" />
+
+    <Button
+        android:id="@+id/dateButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="#2B6777"
+        android:text="Date/Time"
+        app:backgroundTint="#2B6777"
+        app:layout_constraintEnd_toEndOf="@+id/locTxt"
+        app:layout_constraintTop_toTopOf="@+id/dateTime" />
+
+    <ImageButton
+        android:id="@+id/lvlBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="@+id/dateButton"
+        app:layout_constraintTop_toTopOf="@+id/lvlSpin"
+        app:srcCompat="@android:drawable/ic_dialog_info"
+        app:tint="#2B6777"
+        tools:ignore="SpeakableTextPresentCheck" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

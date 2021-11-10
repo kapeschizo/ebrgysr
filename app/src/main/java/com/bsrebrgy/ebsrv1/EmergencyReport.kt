@@ -1,15 +1,17 @@
 package com.bsrebrgy.ebsrv1
 
 import android.Manifest
+import android.app.DatePickerDialog
+import android.app.TimePickerDialog
 import android.content.Intent
 import android.graphics.Bitmap
 import android.os.Bundle
 import android.provider.MediaStore
+import android.text.format.DateFormat
 import android.util.Base64
-import android.widget.Button
-import android.widget.EditText
-import android.widget.ImageView
-import android.widget.Toast
+import android.view.Gravity
+import android.view.View
+import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import com.android.volley.AuthFailureError
 import com.android.volley.DefaultRetryPolicy
@@ -25,7 +27,8 @@ import com.karumi.dexter.listener.single.PermissionListener
 import java.io.ByteArrayOutputStream
 import java.util.*
 
-class EmergencyReport : AppCompatActivity() {
+class EmergencyReport : AppCompatActivity(), DatePickerDialog.OnDateSetListener,
+    TimePickerDialog.OnTimeSetListener {
     lateinit var session : SessionManager
     var user : String? = null
     var bitmap: Bitmap? = null
@@ -35,6 +38,22 @@ class EmergencyReport : AppCompatActivity() {
     var emergsubBtn : Button? = null
     var locTxt : EditText? = null
     var descTxt : EditText? = null
+    var dateButton : Button? = null
+    var dateTime : EditText? = null
+    var day = 0
+    var month : Int = 0
+    var year : Int = 0
+    var hour : Int = 0
+    var minute : Int = 0
+    var myDay = 0
+    var myMonth : Int = 0
+    var myYear : Int = 0
+    var myHour : Int = 0
+    var myMinute : Int = 0
+    var lvlBtn : ImageButton? = null
+    var lvlSpin: Spinner? = null
+    var lvlAdapter: ArrayAdapter<String>? = null
+    var lvlStatus = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -67,11 +86,67 @@ class EmergencyReport : AppCompatActivity() {
                 }).check()
         }
 
+        lvlSpin = findViewById(R.id.lvlSpin)
+
+        val lvlStat = arrayOf("Level 1","Level 2","Level 3")
+        lvlAdapter = ArrayAdapter<String>(this@EmergencyReport,android.R.layout.simple_spinner_dropdown_item,lvlStat)
+        lvlSpin?.setAdapter(lvlAdapter)
+
+        lvlSpin?.onItemSelectedListener = object : AdapterView.OnItemSelectedListener{
+            override fun onNothingSelected(parent: AdapterView<*>?) {
+            }
+            override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+                Toast.makeText(this@EmergencyReport, "You Have Selected"+" "+lvlStat[position],Toast.LENGTH_SHORT).show()
+                lvlStatus = lvlStat[position]
+            }
+        }
+
+        lvlBtn = findViewById(R.id.lvlBtn)
+        lvlBtn?.setOnClickListener {
+            val message = "LEVEL OF EMERGENCY RESPONSE\n\nLevel 1 - Minor Accident \nLevel 2 - Major Accident \nLevel 3 - Super Major Major"
+            val toast = Toast.makeText(this@EmergencyReport, message, Toast.LENGTH_LONG)
+            toast.setGravity(Gravity.TOP,0,250)
+            toast.show()
+        }
+
         locTxt = findViewById(R.id.locTxt)
+
+        dateTime = findViewById(R.id.dateTime)
+        dateButton = findViewById<Button>(R.id.dateButton)
+        dateButton?.setOnClickListener {
+            val calendar: Calendar = Calendar.getInstance()
+            day = calendar.get(Calendar.DAY_OF_MONTH)
+            month = calendar.get(Calendar.MONTH)
+            year = calendar.get(Calendar.YEAR)
+            val datePickerDialog =
+                DatePickerDialog(this@EmergencyReport, this@EmergencyReport, year, month,day)
+            datePickerDialog.show()
+        }
+
         descTxt = findViewById(R.id.descTxt)
         emergsubBtn = findViewById(R.id.emergsubBtn)
         emergsubBtn?.setOnClickListener { uploadtoserver() }
     }
+
+    override fun onDateSet(view: DatePicker?, year: Int, month: Int, dayOfMonth: Int) {
+        myDay = day
+        myYear = year
+        myMonth = month+1
+        val calendar: Calendar = Calendar.getInstance()
+        hour = calendar.get(Calendar.HOUR)
+        minute = calendar.get(Calendar.MINUTE)
+        val timePickerDialog = TimePickerDialog(this@EmergencyReport, this@EmergencyReport, hour, minute,
+            DateFormat.is24HourFormat(this))
+        timePickerDialog.show()
+    }
+
+    override fun onTimeSet(view: TimePicker?, hourOfDay: Int, minute: Int) {
+        myHour = hourOfDay
+//        val am_pm = if (myHour < 12) "AM" else "PM"
+        myMinute = minute
+        dateTime?.setText(myYear.toString()+"-"+myMonth.toString()+"-"+myDay.toString()+" "+myHour.toString()+":"+myMinute.toString())
+    }
+
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         if (requestCode == 111 && resultCode == RESULT_OK) {
@@ -94,6 +169,8 @@ class EmergencyReport : AppCompatActivity() {
         val encodedimage = encodedimage.toString().trim { it <= ' ' }
         val loc = locTxt?.text.toString().trim { it <= ' ' }
         val desc = descTxt?.text.toString().trim { it <= ' ' }
+        val date = dateTime?.text.toString().trim { it <= ' ' }
+        val lvl = lvlStatus
         val request: StringRequest =
             object : StringRequest(
                 Method.POST, url, Response.Listener { response ->
@@ -114,6 +191,8 @@ class EmergencyReport : AppCompatActivity() {
                     map.put("upload", encodedimage)
                     map.put("loc", loc)
                     map.put("desc", desc)
+                    map.put("date", date)
+                    map.put("lvl", lvl)
                     return map
                 }
             }
@@ -125,4 +204,5 @@ class EmergencyReport : AppCompatActivity() {
         val queue = Volley.newRequestQueue(applicationContext)
         queue.add(request)
     }
+
 }

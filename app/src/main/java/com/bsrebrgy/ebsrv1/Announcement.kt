@@ -77,4 +77,5 @@ class Announcement : AppCompatActivity() {
         }) { }
         requestQueue?.add(jsonObjectRequest)
     }
+
 }

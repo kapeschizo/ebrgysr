@@ -28,7 +28,7 @@ class MainActivity : AppCompatActivity() {
             Animation.RELATIVE_TO_SELF, 0.5f
         )
 
-        rotate.duration = 10000
+        rotate.duration = 20000
         rotate.repeatCount = Animation.INFINITE
         logoImg.startAnimation(rotate)
 

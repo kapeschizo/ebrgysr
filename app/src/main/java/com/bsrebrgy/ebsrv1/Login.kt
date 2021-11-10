@@ -82,8 +82,8 @@ class Login : AppCompatActivity() {
                         if (success == "2") {
                             Toast.makeText(applicationContext, message, Toast.LENGTH_SHORT).show()
                             session.createdLoginSessions(user)
-                            val profileIntent = Intent(this, Profile::class.java)
-                            startActivity(profileIntent)
+                            val personIntent = Intent(this, PersonalProfile::class.java)
+                            startActivity(personIntent)
                         }
                         else if (success == "3")
                         {
@@ -92,6 +92,30 @@ class Login : AppCompatActivity() {
 
                             val dashboardIntent = Intent(this, DashboardUser::class.java)
                             startActivity(dashboardIntent)
+                        }
+                        else if (success == "9")
+                        {
+                            session.createdLoginSessions(user)
+                            Toast.makeText(applicationContext, message, Toast.LENGTH_SHORT).show()
+
+                            val signatureIntent = Intent(this, Signature::class.java)
+                            startActivity(signatureIntent)
+                        }
+                        else if (success == "10")
+                        {
+                            session.createdLoginSessions(user)
+                            Toast.makeText(applicationContext, message, Toast.LENGTH_SHORT).show()
+
+                            val uploadidIntent = Intent(this, UploadID::class.java)
+                            startActivity(uploadidIntent)
+                        }
+                        else if (success == "11")
+                        {
+                            session.createdLoginSessions(user)
+                            Toast.makeText(applicationContext, message, Toast.LENGTH_SHORT).show()
+
+                            val selfieIntent = Intent(this, Selfie::class.java)
+                            startActivity(selfieIntent)
                         }
                         else
                         {

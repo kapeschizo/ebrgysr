@@ -87,6 +87,11 @@ class DashboardUser : AppCompatActivity() {
             val hotem = Intent(this, EmergencyHotline::class.java)
             startActivity(hotem)
         }
+        val certiImg = findViewById<ImageView>(R.id.certiImg)
+        certiImg.setOnClickListener {
+            val cert = Intent(this, MyCertificate::class.java)
+            startActivity(cert)
+        }
     }
 
     private fun getUserDetails() {
@@ -148,4 +153,5 @@ class DashboardUser : AppCompatActivity() {
             false
         } else super.onKeyDown(keyCode, event)
     }
+
 }

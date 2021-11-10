@@ -73,7 +73,8 @@
         android:id="@+id/changeBtn"
         android:layout_width="wrap_content"
         android:layout_height="48dp"
-        android:layout_marginTop="2dp"
+        android:layout_marginTop="4dp"
+        android:background="#2b6777"
         android:text="Change Picture"
         android:textSize="10sp"
         app:backgroundTint="#2b6777"
@@ -169,7 +170,7 @@
         app:srcCompat="@drawable/uprequest" />
 
     <ImageView
-        android:id="@+id/imageView15"
+        android:id="@+id/certiImg"
         android:layout_width="wrap_content"
         android:layout_height="78dp"
         android:layout_marginStart="20dp"
@@ -188,9 +189,9 @@
         android:text="My Certificates"
         android:textColor="#2B6777"
         android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="@+id/imageView15"
-        app:layout_constraintStart_toStartOf="@+id/imageView15"
-        app:layout_constraintTop_toBottomOf="@+id/imageView15" />
+        app:layout_constraintEnd_toEndOf="@+id/certiImg"
+        app:layout_constraintStart_toStartOf="@+id/certiImg"
+        app:layout_constraintTop_toBottomOf="@+id/certiImg" />
 
     <ImageView
         android:id="@+id/hotlineImg"
@@ -200,7 +201,7 @@
         android:layout_marginTop="30dp"
         android:layout_marginEnd="5dp"
         app:layout_constraintEnd_toStartOf="@+id/emergImg"
-        app:layout_constraintStart_toEndOf="@+id/imageView15"
+        app:layout_constraintStart_toEndOf="@+id/certiImg"
         app:layout_constraintTop_toBottomOf="@+id/textView30"
         app:srcCompat="@drawable/uphotline" />
 
@@ -245,8 +246,8 @@
         android:layout_width="wrap_content"
         android:layout_height="78dp"
         android:layout_marginTop="30dp"
-        app:layout_constraintEnd_toEndOf="@+id/imageView15"
-        app:layout_constraintStart_toStartOf="@+id/imageView15"
+        app:layout_constraintEnd_toEndOf="@+id/certiImg"
+        app:layout_constraintStart_toStartOf="@+id/certiImg"
         app:layout_constraintTop_toBottomOf="@+id/textView23"
         app:srcCompat="@drawable/upchat" />
 
@@ -256,7 +257,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
         android:layout_marginBottom="16dp"
-        android:text="Chats"
+        android:text="Community Chat"
         android:textColor="#2B6777"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/logoutImg"

@@ -36,6 +36,7 @@ class ChatAdapter(private var mCtx: Context, private var chatlist: List<Chatlist
         holder.chatName.text = (""+chatlister.fnam+" "+chatlister.lnam+"")
         holder.chatMessage.text = chatlister.msg
         holder.chatDate.text = chatlister.dt
+
     }
 
     override fun getItemCount(): Int {

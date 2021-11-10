@@ -80,9 +80,9 @@ class Profile : AppCompatActivity() {
 
         val radioSexGroup = findViewById<RadioGroup>(R.id.radioSexGroup)
         radioSexGroup.setOnCheckedChangeListener { group, ID ->
-            when (ID)
+            when(ID)
             {
-                R.id.radioMale -> {
+                R.id.maleRadio -> {
                     sex = "Male"
 //                    Toast.makeText(this@Profile, "You Have Selected"+" "+sex,Toast.LENGTH_SHORT).show()
                 }

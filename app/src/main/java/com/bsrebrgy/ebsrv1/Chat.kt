@@ -53,6 +53,7 @@ class Chat : AppCompatActivity() {
             private var time: Long = 0
             override fun run() {
                 //after every N seconds refresh view
+                chatlist?.clear()
                 loadChats()
                 time += 1000
                 h.postDelayed(this, howManySecondsToRefresh)
@@ -91,6 +92,7 @@ class Chat : AppCompatActivity() {
                 )
                 recyclerView?.scrollToPosition((chatlist as ArrayList<*>).size - 1)
                 recyclerView?.adapter = adapter
+
 
             } catch (e: JSONException) {
                 e.printStackTrace()

@@ -5,6 +5,8 @@
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.CALL_PHONE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <application
         android:allowBackup="true"
@@ -13,6 +15,42 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.EBSRV1"
         android:usesCleartextTraffic="true">
+        <activity
+            android:name=".ResidentID"
+            android:exported="true" />
+        <activity
+            android:name=".WorkingClearance"
+            android:exported="true" />
+        <activity
+            android:name=".Indigency"
+            android:exported="true" />
+        <activity
+            android:name=".Residency"
+            android:exported="true" />
+        <activity
+            android:name=".MyCertificate"
+            android:exported="true" />
+        <activity
+            android:name=".InfoDisplay"
+            android:exported="true" />
+        <activity
+            android:name=".Selfie"
+            android:exported="true" />
+        <activity
+            android:name=".UploadID"
+            android:exported="true" />
+        <activity
+            android:name=".Signature"
+            android:exported="true" />
+        <activity
+            android:name=".OtherDetails"
+            android:exported="true" />
+        <activity
+            android:name=".HomeAddress"
+            android:exported="true" />
+        <activity
+            android:name=".PersonalProfile"
+            android:exported="true" />
         <activity
             android:name=".Hotlines5"
             android:exported="true" />
@@ -45,9 +83,6 @@
             android:exported="true" />
         <activity
             android:name=".Announcement"
-            android:exported="true" />
-        <activity
-            android:name=".AdminDashboard"
             android:exported="true" />
         <activity android:name=".ProfileImage" />
         <activity android:name=".DashboardUser" />

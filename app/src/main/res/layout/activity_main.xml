@@ -33,7 +33,7 @@
         android:id="@+id/logoImg"
         android:layout_width="267dp"
         android:layout_height="285dp"
-        android:layout_marginTop="116dp"
+        android:layout_marginTop="100dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
@@ -44,17 +44,18 @@
         android:id="@+id/loginPageBtn"
         android:layout_width="0dp"
         android:layout_height="54dp"
-        android:layout_marginStart="70dp"
-        android:layout_marginEnd="70dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginEnd="24dp"
+        android:background="#2B6777"
         android:fontFamily="@font/montserrat"
         android:text="WELCOME"
         android:textStyle="bold"
         app:backgroundTint="#2b6777"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.501"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/logoImg"
-        app:layout_constraintVertical_bias="0.238" />
+        app:layout_constraintVertical_bias="0.3" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

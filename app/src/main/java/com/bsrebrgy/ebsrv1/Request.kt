@@ -1,6 +1,5 @@
 package com.bsrebrgy.ebsrv1
 
-import android.app.DatePickerDialog
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
@@ -25,15 +24,6 @@ class Request : AppCompatActivity() {
     var requestQueue: RequestQueue? = null
     var docusAdapter: ArrayAdapter<String>? = null
     var docus = ""
-    var spinnerTime: Spinner? = null
-    var timeList: ArrayList<String> = ArrayList()
-    var timeid: ArrayList<String> = ArrayList()
-    var timeAdapter: ArrayAdapter<String>? = null
-    var time = ""
-    var editDate: TextView? = null
-    private var y: Int = 0
-    private var m: Int = 0
-    private var d: Int = 0
     var submitBtn : Button? = null
     var purposeEtxt: EditText? = null
 
@@ -79,66 +69,7 @@ class Request : AppCompatActivity() {
                 docus = docusid[position]
             }
         }
-
-//        requestQueue1 = Volley.newRequestQueue(this)
-        spinnerTime = findViewById(R.id.spinnerTime)
-
-        val url1 = "http://www.barangaysanroqueantipolo.site/API/timeApi.php"
-        val jsonObjectRequest1 = JsonObjectRequest(Request.Method.POST, url1, null, { response ->
-            try {
-                val jsonArray = response.getJSONArray("times")
-                for (i in 0 until jsonArray.length()) {
-                    val jsonObject = jsonArray.getJSONObject(i)
-                    val timeName = jsonObject.optString("time")
-                    val timeId = jsonObject.optString("tid")
-                    timeList.add(timeName)
-                    timeid.add(timeId)
-                    timeAdapter = ArrayAdapter<String>(
-                        this@Request,
-                        android.R.layout.simple_spinner_dropdown_item, timeList
-                    )
-                    spinnerTime?.setAdapter(timeAdapter)
-                }
-            } catch (e: JSONException) {
-                e.printStackTrace()
-            }
-        }) { }
-        requestQueue?.add(jsonObjectRequest1)
-
-        spinnerTime?.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
-            override fun onNothingSelected(parent: AdapterView<*>?) {
-            }
-            override fun onItemSelected(
-                parent: AdapterView<*>?,
-                view: View?,
-                position: Int,
-                id: Long
-            ) {
-                time = timeid[position]
-            }
-        }
-
         purposeEtxt = findViewById(R.id.purposeEtxt)
-
-        editDate = findViewById(R.id.rdateEtxt)
-        val dateBtn2 = findViewById<Button>(R.id.dateBtn2)
-        dateBtn2.setOnClickListener {
-            val c = Calendar.getInstance()
-            d = c.get(Calendar.DATE)
-            m = c.get(Calendar.MONTH)
-            y = c.get(Calendar.YEAR)
-
-            val datePicker = DatePickerDialog(
-                this,
-                { view, year, month, dayOfMonth ->
-                    val mon = month+1
-                    editDate?.setText(year.toString() + "-" + mon.toString() + "-" + dayOfMonth.toString())
-                    val date = editDate?.text.toString()
-                    Toast.makeText(this@Request, "You Have Selected"+" "+date,Toast.LENGTH_SHORT).show()
-                }, y, m, d)
-            datePicker.getDatePicker().setMinDate(System.currentTimeMillis() - 1000);
-            datePicker.show()
-        }
 
         submitBtn = findViewById(R.id.submitBtn)
         submitBtn?.setOnClickListener { uploadtoserver() }
@@ -210,8 +141,6 @@ class Request : AppCompatActivity() {
         val url = "http://www.barangaysanroqueantipolo.site/API/requestdocApi.php"
         val username: String = user!!.toString().trim { it <= ' ' }
         val purpose = purposeEtxt?.text.toString().trim { it <= ' ' }
-        val edate = editDate?.text.toString().trim { it <= ' ' }
-        val time: String = time!!.toString().trim { it <= ' ' }
         val docus: String = docus!!.toString().trim { it <= ' ' }
         val request: StringRequest =
             object : StringRequest(Method.POST, url, Response.Listener { response ->
@@ -229,8 +158,6 @@ class Request : AppCompatActivity() {
                         HashMap<String, String>()
                     map.put("user", username)
                     map.put("purpose", purpose)
-                    map.put("date", edate)
-                    map.put("time", time)
                     map.put("docus", docus)
                     return map
                 }
