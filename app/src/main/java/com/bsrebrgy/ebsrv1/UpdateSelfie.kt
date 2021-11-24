@@ -6,8 +6,9 @@ import android.graphics.Bitmap
 import android.os.Bundle
 import android.provider.MediaStore
 import android.util.Base64
-import android.view.KeyEvent
-import android.widget.*
+import android.widget.Button
+import android.widget.ImageView
+import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import com.android.volley.AuthFailureError
@@ -21,10 +22,12 @@ import com.karumi.dexter.listener.PermissionDeniedResponse
 import com.karumi.dexter.listener.PermissionGrantedResponse
 import com.karumi.dexter.listener.PermissionRequest
 import com.karumi.dexter.listener.single.PermissionListener
+import org.json.JSONException
+import org.json.JSONObject
 import java.io.ByteArrayOutputStream
 import java.util.*
 
-class Selfie : AppCompatActivity() {
+class UpdateSelfie : AppCompatActivity() {
     lateinit var session : SessionManager
     var user : String? = null
     var bitmap: Bitmap? = null
@@ -36,8 +39,8 @@ class Selfie : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_selfie)
-        session = SessionManager(this@Selfie)
+        setContentView(R.layout.activity_update_selfie)
+        session = SessionManager(this@UpdateSelfie)
         session.checkLogin()
 
         val data = session.getUserDetails()
@@ -65,6 +68,11 @@ class Selfie : AppCompatActivity() {
                 }).check()
         }
 
+        selfuploadidBtn = findViewById(R.id.selfuploadidBtn)
+        selfuploadidBtn?.setOnClickListener {
+            val upselfUp = Intent(this, UpdateSelfieFileUpload::class.java)
+            startActivity(upselfUp)
+        }
 
         selfsubBtn = findViewById(R.id.selfsubBtn)
         selfsubBtn?.setOnClickListener {
@@ -73,8 +81,16 @@ class Selfie : AppCompatActivity() {
             alertdialog.setMessage("Do you want to Submit")
 
             alertdialog.setButton(AlertDialog.BUTTON_POSITIVE,"Yes") {
-                    dialog, which -> uploadtoserver()
-                dialog.dismiss()}
+                    dialog, which ->
+                if(selfView?.drawable == null)
+                {
+                    Toast.makeText(applicationContext, "No File", Toast.LENGTH_LONG).show()
+                }
+                else
+                {
+                    uploadtoserver()
+                }
+                    dialog.dismiss()}
 
             alertdialog.setButton(AlertDialog.BUTTON_NEGATIVE,"No") {
                     dialog, which ->
@@ -99,14 +115,31 @@ class Selfie : AppCompatActivity() {
     }
 
     private fun uploadtoserver() {
-        val url = "http://www.barangaysanroqueantipolo.site/API/selfiecamApi.php"
+        val url = "http://www.barangaysanroqueantipolo.site/API/updateSelfiecamApi.php"
         val username: String = user!!.toString().trim { it <= ' ' }
         val encodedimage = encodedimage.toString().trim { it <= ' ' }
-        val request: StringRequest =
-            object : StringRequest(
-                Method.POST, url, Response.Listener { response ->
-                    Toast.makeText(applicationContext, "Your Account is still pending! wait until Admin Approve", Toast.LENGTH_LONG).show()
-                    session.logoutUser()
+        val request: StringRequest = object : StringRequest(Method.POST, url, Response.Listener { response ->
+                    try {
+                        val jsonObject = JSONObject(response)
+                        val success = jsonObject.getString("success")
+                        val message = jsonObject.getString("message")
+
+                        if (success == "0")
+                        {
+                            Toast.makeText(applicationContext, "Selfie Updated!", Toast.LENGTH_LONG).show()
+                            val dashboard = Intent(this, DashboardUser::class.java)
+                            startActivity(dashboard)
+                        }
+                        else
+                        {
+                            Toast.makeText(applicationContext, message, Toast.LENGTH_SHORT).show()
+                        }
+
+
+                    } catch (e: JSONException) {
+                        e.printStackTrace()
+                        Toast.makeText(applicationContext, "Update Error! $e", Toast.LENGTH_LONG).show()
+                    }
 
                 },
                 Response.ErrorListener { error ->
@@ -128,10 +161,5 @@ class Selfie : AppCompatActivity() {
         )
         val queue = Volley.newRequestQueue(applicationContext)
         queue.add(request)
-    }
-    override fun onKeyDown(keyCode: Int, event: KeyEvent?): Boolean {
-        return if (keyCode == KeyEvent.KEYCODE_BACK) {
-            false
-        } else super.onKeyDown(keyCode, event)
     }
 }

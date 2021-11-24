@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Selfie">
+    tools:context=".UpdateSelfieFileUpload">
 
     <ImageView
         android:id="@+id/bgupload"
@@ -29,7 +29,7 @@
         android:layout_marginEnd="24dp"
         android:fontFamily="@font/montserrat"
         android:padding="5dp"
-        android:text="Selfie with your Valid ID"
+        android:text="Upload Selfie with your Valid ID"
         android:textAlignment="center"
         android:textColor="#2B6777"
         android:textSize="30sp"
@@ -44,7 +44,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:text="TAKE A SELFIE w/ VALID ID"
+        android:text="UPLOAD A SELFIE w/ VALID ID"
         android:textAlignment="center"
         android:textColor="#2b6777"
         android:textSize="24sp"
@@ -61,26 +61,10 @@
         android:layout_marginTop="8dp"
         android:layout_marginEnd="24dp"
         android:layout_marginBottom="8dp"
-        app:layout_constraintBottom_toTopOf="@+id/selfcamBtn"
+        app:layout_constraintBottom_toTopOf="@+id/selfuploadidBtn"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView22" />
-
-    <Button
-        android:id="@+id/selfcamBtn"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginEnd="24dp"
-        android:layout_marginBottom="8dp"
-        android:background="#2B6777"
-        android:text="Open Camera"
-        android:textSize="18sp"
-        app:backgroundTint="#2B6777"
-        app:layout_constraintBottom_toTopOf="@+id/selfuploadidBtn"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/selfuploadidBtn"

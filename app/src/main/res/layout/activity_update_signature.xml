@@ -1,13 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:sign="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Selfie">
+    tools:context=".UpdateSignature">
 
     <ImageView
-        android:id="@+id/bgupload"
+        android:id="@+id/bgsig"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:alpha="0.40"
@@ -21,7 +23,7 @@
         app:srcCompat="@drawable/bgopacity" />
 
     <TextView
-        android:id="@+id/upload"
+        android:id="@+id/sig"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
@@ -29,90 +31,104 @@
         android:layout_marginEnd="24dp"
         android:fontFamily="@font/montserrat"
         android:padding="5dp"
-        android:text="Selfie with your Valid ID"
+        android:text="Signature"
         android:textAlignment="center"
         android:textColor="#2B6777"
-        android:textSize="30sp"
+        android:textSize="30dp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/bgupload" />
+        app:layout_constraintTop_toTopOf="@+id/bgsig" />
 
-    <TextView
-        android:id="@+id/textView22"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:text="TAKE A SELFIE w/ VALID ID"
-        android:textAlignment="center"
-        android:textColor="#2b6777"
-        android:textSize="24sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/upload" />
-
-    <ImageView
-        android:id="@+id/selfView"
-        android:layout_width="match_parent"
+    <com.kyanogen.signatureview.SignatureView
+        android:id="@+id/signatureView"
+        android:layout_width="0dp"
         android:layout_height="0dp"
+        android:layout_weight="1"
         android:layout_marginStart="24dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="24dp"
         android:layout_marginBottom="8dp"
-        app:layout_constraintBottom_toTopOf="@+id/selfcamBtn"
+        sign:penSize="5dp"
+        sign:backgroundColor="#ffffff"
+        sign:penColor="#000000"
+        sign:enableSignature="true"
+        app:layout_constraintBottom_toTopOf="@+id/buttonCamera"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView22" />
+        app:layout_constraintTop_toBottomOf="@+id/sig" />
 
     <Button
-        android:id="@+id/selfcamBtn"
-        android:layout_width="match_parent"
+        android:id="@+id/buttonCamera"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
-        android:layout_marginEnd="24dp"
-        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
         android:background="#2B6777"
         android:text="Open Camera"
-        android:textSize="18sp"
+        android:textSize="14sp"
         app:backgroundTint="#2B6777"
-        app:layout_constraintBottom_toTopOf="@+id/selfuploadidBtn"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintEnd_toStartOf="@+id/guideline7"
+        app:layout_constraintHorizontal_bias="0.515"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/btnUpload" />
 
     <Button
-        android:id="@+id/selfuploadidBtn"
-        android:layout_width="match_parent"
+        android:id="@+id/btnUpload"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginBottom="8dp"
+        android:background="#2B6777"
+        android:text="Upload File"
+        android:textSize="14sp"
+        app:backgroundTint="#2B6777"
+        app:layout_constraintBottom_toTopOf="@+id/buttonClear"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/guideline7" />
+
+    <Button
+        android:id="@+id/buttonClear"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
         android:layout_marginEnd="24dp"
         android:layout_marginBottom="8dp"
         android:background="#2B6777"
-        android:text="UPLOAD FILE (SELFIE W/ ID)"
+        android:text="Clear"
         android:textSize="18sp"
         app:backgroundTint="#2B6777"
-        app:layout_constraintBottom_toTopOf="@+id/selfsubBtn"
+        app:layout_constraintBottom_toTopOf="@+id/buttonSubmit"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
-        android:id="@+id/selfsubBtn"
-        android:layout_width="match_parent"
+        android:id="@+id/buttonSubmit"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
         android:layout_marginEnd="24dp"
-        android:layout_marginBottom="8dp"
+        android:layout_marginBottom="10dp"
         android:background="#2B6777"
-        android:text="SUBMIT"
+        android:text="Submit"
         android:textSize="18sp"
         android:textStyle="bold"
         app:backgroundTint="#2B6777"
-        app:layout_constraintBottom_toBottomOf="@+id/bgupload"
+        app:layout_constraintBottom_toBottomOf="@+id/bgsig"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.5" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

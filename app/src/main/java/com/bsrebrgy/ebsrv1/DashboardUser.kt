@@ -92,6 +92,16 @@ class DashboardUser : AppCompatActivity() {
             val cert = Intent(this, MyCertificate::class.java)
             startActivity(cert)
         }
+        val newsImg = findViewById<ImageView>(R.id.newsImg)
+        newsImg.setOnClickListener {
+            val news = Intent(this, BarangayNews::class.java)
+            startActivity(news)
+        }
+        val profImg = findViewById<ImageView>(R.id.profImage)
+        profImg.setOnClickListener {
+            val prof = Intent(this, UpdateProfile::class.java)
+            startActivity(prof)
+        }
     }
 
     private fun getUserDetails() {

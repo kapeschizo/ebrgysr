@@ -96,7 +96,7 @@ class EmergencyReport : AppCompatActivity(), DatePickerDialog.OnDateSetListener,
             override fun onNothingSelected(parent: AdapterView<*>?) {
             }
             override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
-                Toast.makeText(this@EmergencyReport, "You Have Selected"+" "+lvlStat[position],Toast.LENGTH_SHORT).show()
+//                Toast.makeText(this@EmergencyReport, "You Have Selected"+" "+lvlStat[position],Toast.LENGTH_SHORT).show()
                 lvlStatus = lvlStat[position]
             }
         }

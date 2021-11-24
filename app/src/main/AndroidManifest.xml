@@ -16,6 +16,48 @@
         android:theme="@style/Theme.EBSRV1"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".UpdateSelfieFileUpload"
+            android:exported="true" />
+        <activity
+            android:name=".UpdateUploadIDFileUpload"
+            android:exported="true" />
+        <activity
+            android:name=".UpdateSignatureFileUpload"
+            android:exported="true" />
+        <activity
+            android:name=".UpdateSelfie"
+            android:exported="true" />
+        <activity
+            android:name=".UpdateUploadID"
+            android:exported="true" />
+        <activity
+            android:name=".UpdateSignatureUpload"
+            android:exported="true" />
+        <activity
+            android:name=".UpdateSignature"
+            android:exported="true" />
+        <activity
+            android:name=".UpdateIdsSignature"
+            android:exported="true" />
+        <activity
+            android:name=".UpdateOtherDetails"
+            android:exported="true" />
+        <activity
+            android:name=".UpdateHomeAddress"
+            android:exported="true" />
+        <activity
+            android:name=".UpdatePersonalProfile"
+            android:exported="true" />
+        <activity
+            android:name=".UpdateProfile"
+            android:exported="true" />
+        <activity
+            android:name=".BarangayNews"
+            android:exported="true" />
+        <activity
+            android:name=".SignatureUpload"
+            android:exported="true" />
+        <activity
             android:name=".ResidentID"
             android:exported="true" />
         <activity

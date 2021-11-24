@@ -6,8 +6,9 @@ import android.graphics.Bitmap
 import android.os.Bundle
 import android.provider.MediaStore
 import android.util.Base64
-import android.view.KeyEvent
-import android.widget.*
+import android.widget.Button
+import android.widget.ImageView
+import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import com.android.volley.AuthFailureError
@@ -24,29 +25,28 @@ import com.karumi.dexter.listener.single.PermissionListener
 import java.io.ByteArrayOutputStream
 import java.util.*
 
-class Selfie : AppCompatActivity() {
+class SignatureUpload : AppCompatActivity() {
     lateinit var session : SessionManager
     var user : String? = null
+    var signcamBtn: Button? = null
+    var signView: ImageView? = null
+    var signsubBtn : Button? = null
     var bitmap: Bitmap? = null
     var encodedimage: String? = null
-    var selfcamBtn: Button? = null
-    var selfView: ImageView? = null
-    var selfuploadidBtn : Button? = null
-    var selfsubBtn : Button? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_selfie)
-        session = SessionManager(this@Selfie)
+        setContentView(R.layout.activity_signature_upload)
+        session = SessionManager(this@SignatureUpload)
         session.checkLogin()
 
         val data = session.getUserDetails()
         user = data.get(SessionManager.KEY_USERNAME)
 
-        selfcamBtn = findViewById(R.id.selfcamBtn)
-        selfView = findViewById(R.id.selfView)
+        signcamBtn = findViewById(R.id.signcamBtn)
+        signView = findViewById(R.id.signView)
 
-        selfcamBtn?.setOnClickListener {
+        signcamBtn?.setOnClickListener {
             Dexter.withContext(applicationContext)
                 .withPermission(Manifest.permission.CAMERA)
                 .withListener(object : PermissionListener {
@@ -65,9 +65,8 @@ class Selfie : AppCompatActivity() {
                 }).check()
         }
 
-
-        selfsubBtn = findViewById(R.id.selfsubBtn)
-        selfsubBtn?.setOnClickListener {
+        signsubBtn = findViewById(R.id.signsubBtn)
+        signsubBtn?.setOnClickListener {
             val alertdialog : AlertDialog = AlertDialog.Builder(this).create()
             alertdialog.setTitle("Are You Sure")
             alertdialog.setMessage("Do you want to Submit")
@@ -82,11 +81,10 @@ class Selfie : AppCompatActivity() {
             alertdialog.show()
         }
     }
-
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         if (requestCode == 111 && resultCode == RESULT_OK) {
             bitmap = data!!.extras!!["data"] as Bitmap?
-            selfView?.setImageBitmap(bitmap)
+            signView?.setImageBitmap(bitmap)
             encodebitmap(bitmap)
         }
         super.onActivityResult(requestCode, resultCode, data)
@@ -99,14 +97,16 @@ class Selfie : AppCompatActivity() {
     }
 
     private fun uploadtoserver() {
-        val url = "http://www.barangaysanroqueantipolo.site/API/selfiecamApi.php"
+        val url = "http://www.barangaysanroqueantipolo.site/API/signcamApi.php"
         val username: String = user!!.toString().trim { it <= ' ' }
         val encodedimage = encodedimage.toString().trim { it <= ' ' }
         val request: StringRequest =
             object : StringRequest(
                 Method.POST, url, Response.Listener { response ->
-                    Toast.makeText(applicationContext, "Your Account is still pending! wait until Admin Approve", Toast.LENGTH_LONG).show()
-                    session.logoutUser()
+                    Toast.makeText(applicationContext, "Signature Uploaded!", Toast.LENGTH_LONG).show()
+                    val uploadid = Intent(this, UploadID::class.java)
+                    startActivity(uploadid)
+//                    session.logoutUser()
 
                 },
                 Response.ErrorListener { error ->
@@ -117,7 +117,7 @@ class Selfie : AppCompatActivity() {
                     val map: MutableMap<String, String> =
                         HashMap<String, String>()
                     map.put("user", username)
-                    map.put("self", encodedimage)
+                    map.put("sign", encodedimage)
                     return map
                 }
             }
@@ -128,10 +128,5 @@ class Selfie : AppCompatActivity() {
         )
         val queue = Volley.newRequestQueue(applicationContext)
         queue.add(request)
-    }
-    override fun onKeyDown(keyCode: Int, event: KeyEvent?): Boolean {
-        return if (keyCode == KeyEvent.KEYCODE_BACK) {
-            false
-        } else super.onKeyDown(keyCode, event)
     }
 }

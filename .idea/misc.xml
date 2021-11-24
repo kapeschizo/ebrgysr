@@ -8,6 +8,7 @@
         <entry key="..\:/Users/theri/ebsrv1/app/src/main/res/drawable/rectangle_border.xml" value="0.3449074074074074" />
         <entry key="..\:/Users/theri/ebsrv1/app/src/main/res/layout/activity_admin_dashboard.xml" value="0.33055555555555555" />
         <entry key="..\:/Users/theri/ebsrv1/app/src/main/res/layout/activity_announcement.xml" value="0.33055555555555555" />
+        <entry key="..\:/Users/theri/ebsrv1/app/src/main/res/layout/activity_barangay_news.xml" value="0.33055555555555555" />
         <entry key="..\:/Users/theri/ebsrv1/app/src/main/res/layout/activity_certificates.xml" value="0.33055555555555555" />
         <entry key="..\:/Users/theri/ebsrv1/app/src/main/res/layout/activity_change_picture.xml" value="0.33055555555555555" />
         <entry key="..\:/Users/theri/ebsrv1/app/src/main/res/layout/activity_chat.xml" value="0.33055555555555555" />
@@ -37,11 +38,25 @@
         <entry key="..\:/Users/theri/ebsrv1/app/src/main/res/layout/activity_resident_id.xml" value="0.31805555555555554" />
         <entry key="..\:/Users/theri/ebsrv1/app/src/main/res/layout/activity_selfie.xml" value="0.33055555555555555" />
         <entry key="..\:/Users/theri/ebsrv1/app/src/main/res/layout/activity_signature.xml" value="0.33055555555555555" />
+        <entry key="..\:/Users/theri/ebsrv1/app/src/main/res/layout/activity_signature_upload.xml" value="0.33055555555555555" />
+        <entry key="..\:/Users/theri/ebsrv1/app/src/main/res/layout/activity_update_home_address.xml" value="0.33055555555555555" />
+        <entry key="..\:/Users/theri/ebsrv1/app/src/main/res/layout/activity_update_ids_signature.xml" value="0.298494983277592" />
+        <entry key="..\:/Users/theri/ebsrv1/app/src/main/res/layout/activity_update_other_details.xml" value="0.31805555555555554" />
+        <entry key="..\:/Users/theri/ebsrv1/app/src/main/res/layout/activity_update_personal_profile.xml" value="0.33055555555555555" />
+        <entry key="..\:/Users/theri/ebsrv1/app/src/main/res/layout/activity_update_profile.xml" value="0.33055555555555555" />
+        <entry key="..\:/Users/theri/ebsrv1/app/src/main/res/layout/activity_update_selfie.xml" value="0.33055555555555555" />
+        <entry key="..\:/Users/theri/ebsrv1/app/src/main/res/layout/activity_update_selfie_file_upload.xml" value="0.33055555555555555" />
+        <entry key="..\:/Users/theri/ebsrv1/app/src/main/res/layout/activity_update_signature.xml" value="0.33055555555555555" />
+        <entry key="..\:/Users/theri/ebsrv1/app/src/main/res/layout/activity_update_signature_file_upload.xml" value="0.33055555555555555" />
+        <entry key="..\:/Users/theri/ebsrv1/app/src/main/res/layout/activity_update_signature_upload.xml" value="0.33055555555555555" />
+        <entry key="..\:/Users/theri/ebsrv1/app/src/main/res/layout/activity_update_upload_id.xml" value="0.33055555555555555" />
+        <entry key="..\:/Users/theri/ebsrv1/app/src/main/res/layout/activity_update_upload_idfile_upload.xml" value="0.33055555555555555" />
         <entry key="..\:/Users/theri/ebsrv1/app/src/main/res/layout/activity_upload_id.xml" value="0.31805555555555554" />
         <entry key="..\:/Users/theri/ebsrv1/app/src/main/res/layout/activity_working_clearance.xml" value="0.33055555555555555" />
         <entry key="..\:/Users/theri/ebsrv1/app/src/main/res/layout/cert_layout.xml" value="0.33055555555555555" />
         <entry key="..\:/Users/theri/ebsrv1/app/src/main/res/layout/chat_layout.xml" value="0.3050925925925926" />
         <entry key="..\:/Users/theri/ebsrv1/app/src/main/res/layout/hotline_layout.xml" value="0.33055555555555555" />
+        <entry key="..\:/Users/theri/ebsrv1/app/src/main/res/layout/news_layout.xml" value="0.33055555555555555" />
         <entry key="..\:/Users/theri/ebsrv1/app/src/main/res/layout/rectangle_border.xml" value="0.33055555555555555" />
         <entry key="..\:/Users/theri/ebsrv1/app/src/main/res/layout/recycler_layout.xml" value="0.33055555555555555" />
         <entry key="..\:/ebsrv1/app/src/main/res/layout/activity_admin_dashboard.xml" value="0.33" />

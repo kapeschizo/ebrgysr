@@ -8,7 +8,6 @@ import android.os.Bundle
 import android.os.Environment
 import android.util.Base64
 import android.util.Log
-import android.view.KeyEvent
 import android.widget.Button
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
@@ -30,7 +29,10 @@ import java.io.FileOutputStream
 import java.io.IOException
 import java.util.*
 
-class Signature : AppCompatActivity() {
+
+
+
+class UpdateSignature : AppCompatActivity() {
     lateinit var session : SessionManager
     var user : String? = null
     var bitmap: Bitmap? = null
@@ -40,11 +42,12 @@ class Signature : AppCompatActivity() {
     var path: String? = null
     var encodedimage: String? = null
     var buttonCamera: Button? = null
+    var buttonUpload: Button? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_signature)
-        session = SessionManager(this@Signature)
+        setContentView(R.layout.activity_update_signature)
+        session = SessionManager(this@UpdateSignature)
         session.checkLogin()
 
         val data = session.getUserDetails()
@@ -79,8 +82,14 @@ class Signature : AppCompatActivity() {
 
         buttonCamera = findViewById(R.id.buttonCamera)
         buttonCamera?.setOnClickListener {
-            val signCam = Intent(this, SignatureUpload::class.java)
-            startActivity(signCam)
+            val upsignCam = Intent(this, UpdateSignatureUpload::class.java)
+            startActivity(upsignCam)
+        }
+
+        buttonUpload = findViewById(R.id.btnUpload)
+        buttonUpload?.setOnClickListener {
+        val upsignUp = Intent(this, UpdateSignatureFileUpload::class.java)
+        startActivity(upsignUp)
         }
     }
 
@@ -111,14 +120,13 @@ class Signature : AppCompatActivity() {
             val fo = FileOutputStream(f)
             fo.write(bytes.toByteArray())
             MediaScannerConnection.scanFile(
-                this@Signature,
+                this@UpdateSignature,
                 arrayOf(f.path),
                 arrayOf("image/jpeg"), null
             )
             fo.close()
             Log.d("TAG", "File Saved::--->" + f.absolutePath)
-            Toast.makeText(applicationContext, "Signature Saved !!!", Toast.LENGTH_SHORT)
-                .show()
+//            Toast.makeText(applicationContext, "Signature Saved !!!", Toast.LENGTH_SHORT).show()
             signatureView?.clearCanvas()
 
             return f.absolutePath
@@ -139,8 +147,7 @@ class Signature : AppCompatActivity() {
                 override fun onPermissionsChecked(report: MultiplePermissionsReport) {
                     // check if all permissions are granted
                     if (report.areAllPermissionsGranted()) {
-                        Toast.makeText(applicationContext, "All permissions are granted by user!", Toast.LENGTH_SHORT)
-                            .show()
+//                        Toast.makeText(applicationContext, "All permissions are granted by user!", Toast.LENGTH_SHORT).show()
                     }
 
                     // check for permanent denial of any permission
@@ -165,17 +172,16 @@ class Signature : AppCompatActivity() {
     }
 
     private fun uploadtoserver() {
-        val url = "http://www.barangaysanroqueantipolo.site/API/signatureApi.php"
+        val url = "http://www.barangaysanroqueantipolo.site/API/updateSignatureApi.php"
         val username: String = user!!.toString().trim { it <= ' ' }
         val encodedimage = encodedimage.toString().trim { it <= ' ' }
         val request: StringRequest =
             object : StringRequest(
                 Method.POST, url, Response.Listener { response ->
-                Toast.makeText(applicationContext, "Signature Uploaded!", Toast.LENGTH_LONG).show()
-                    val uploadid = Intent(this, UploadID::class.java)
-                    startActivity(uploadid)
-//                session.logoutUser()
-            },
+                    Toast.makeText(applicationContext, "Signature Updated!", Toast.LENGTH_LONG).show()
+                    val dashboard = Intent(this, DashboardUser::class.java)
+                    startActivity(dashboard)
+                },
                 Response.ErrorListener { error ->
                     Toast.makeText(applicationContext, error.toString(), Toast.LENGTH_SHORT).show()
                 }) {
@@ -195,10 +201,5 @@ class Signature : AppCompatActivity() {
         )
         val queue = Volley.newRequestQueue(applicationContext)
         queue.add(request)
-    }
-    override fun onKeyDown(keyCode: Int, event: KeyEvent?): Boolean {
-        return if (keyCode == KeyEvent.KEYCODE_BACK) {
-            false
-        } else super.onKeyDown(keyCode, event)
     }
 }
