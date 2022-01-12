@@ -98,6 +98,12 @@ class UploadID : AppCompatActivity() {
                 dialog.dismiss()}
             alertdialog.show()
         }
+
+        uploadBtn = findViewById(R.id.selfuploadidBtn)
+        uploadBtn?.setOnClickListener {
+            val signUpload = Intent(this, UploadIDFileUpload::class.java)
+            startActivity(signUpload)
+        }
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {

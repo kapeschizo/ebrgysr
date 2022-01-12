@@ -21,6 +21,30 @@
         app:layout_constraintVertical_bias="0.0"
         app:srcCompat="@drawable/bgopacity" />
 
+    <TextView
+        android:id="@+id/textView63"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:text="About"
+        android:textColor="#2B6777"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/logoutImg"
+        app:layout_constraintEnd_toEndOf="@+id/aboutImg"
+        app:layout_constraintStart_toStartOf="@+id/aboutImg"
+        app:layout_constraintTop_toBottomOf="@+id/aboutImg"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <ImageView
+        android:id="@+id/aboutImg"
+        android:layout_width="wrap_content"
+        android:layout_height="78dp"
+        android:layout_marginTop="30dp"
+        app:layout_constraintEnd_toEndOf="@+id/emergImg"
+        app:layout_constraintStart_toStartOf="@+id/emergImg"
+        app:layout_constraintTop_toBottomOf="@+id/textView28"
+        app:srcCompat="@drawable/about" />
+
     <ImageView
         android:id="@+id/imageView12"
         android:layout_width="0dp"
@@ -54,6 +78,7 @@
         android:layout_height="157dp"
         android:layout_marginTop="40dp"
         app:layout_constraintEnd_toEndOf="parent"
+        android:background="@drawable/rectangle_border"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/noimg" />
@@ -269,7 +294,9 @@
         android:id="@+id/newsImg"
         android:layout_width="wrap_content"
         android:layout_height="78dp"
+        android:layout_marginStart="5dp"
         android:layout_marginTop="30dp"
+        android:layout_marginEnd="5dp"
         app:layout_constraintEnd_toEndOf="@+id/hotlineImg"
         app:layout_constraintStart_toStartOf="@+id/hotlineImg"
         app:layout_constraintTop_toBottomOf="@+id/textView27"
@@ -283,12 +310,10 @@
         android:text="Barangay News"
         android:textColor="#2B6777"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/logoutImg"
         app:layout_constraintEnd_toEndOf="@+id/newsImg"
         app:layout_constraintHorizontal_bias="0.517"
         app:layout_constraintStart_toStartOf="@+id/newsImg"
-        app:layout_constraintTop_toBottomOf="@+id/newsImg"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintTop_toBottomOf="@+id/newsImg" />
 
     <!--    <TextClock-->
     <!--        android:id="@+id/txtClock"-->

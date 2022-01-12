@@ -96,7 +96,7 @@ class UpdateSignatureFileUpload : AppCompatActivity() {
 
 
     private fun uploadtoserver() {
-        val url = "http://www.barangaysanroqueantipolo.site/API/signatureApi.php"
+        val url = "http://www.barangaysanroqueantipolo.site/API/updateSignatureApi.php"
         val username: String = user!!.toString().trim { it <= ' ' }
         val encodedimage = encodedimage.toString().trim { it <= ' ' }
         val request: StringRequest =

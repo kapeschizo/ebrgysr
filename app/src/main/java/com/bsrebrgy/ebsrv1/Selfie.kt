@@ -31,7 +31,7 @@ class Selfie : AppCompatActivity() {
     var encodedimage: String? = null
     var selfcamBtn: Button? = null
     var selfView: ImageView? = null
-    var selfuploadidBtn : Button? = null
+    var selfuploadBtn : Button? = null
     var selfsubBtn : Button? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -80,6 +80,12 @@ class Selfie : AppCompatActivity() {
                     dialog, which ->
                 dialog.dismiss()}
             alertdialog.show()
+        }
+
+        selfuploadBtn = findViewById(R.id.selfuploadBtn)
+        selfuploadBtn?.setOnClickListener {
+            val selfUpload = Intent(this, SelfFileUpload::class.java)
+            startActivity(selfUpload)
         }
     }
 

@@ -41,7 +41,7 @@
     <ImageView
         android:id="@+id/emergCam"
         android:layout_width="0dp"
-        android:layout_height="220dp"
+        android:layout_height="270dp"
         android:layout_marginTop="8dp"
         app:layout_constraintEnd_toEndOf="@+id/textView32"
         app:layout_constraintHorizontal_bias="0.0"
@@ -52,7 +52,6 @@
         android:id="@+id/emergcamBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
         android:background="#2B6777"
         android:text="OPEN CAMERA"
         app:backgroundTint="#2B6777"
@@ -78,7 +77,7 @@
         app:layout_constraintEnd_toEndOf="@+id/emergCam"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/emergCam"
-        app:layout_constraintTop_toBottomOf="@+id/lvlBtn" />
+        app:layout_constraintTop_toBottomOf="@+id/dateButton" />
 
     <EditText
         android:id="@+id/locTxt"
@@ -109,17 +108,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
-    <Spinner
-        android:id="@+id/lvlSpin"
-        android:layout_width="308dp"
-        android:layout_height="48dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        app:layout_constraintEnd_toStartOf="@+id/lvlBtn"
-        app:layout_constraintStart_toStartOf="@+id/dateTime"
-        app:layout_constraintTop_toBottomOf="@+id/dateButton"
-        tools:ignore="SpeakableTextPresentCheck" />
-
     <EditText
         android:id="@+id/dateTime"
         android:layout_width="0dp"
@@ -144,16 +132,6 @@
         app:backgroundTint="#2B6777"
         app:layout_constraintEnd_toEndOf="@+id/locTxt"
         app:layout_constraintTop_toTopOf="@+id/dateTime" />
-
-    <ImageButton
-        android:id="@+id/lvlBtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintEnd_toEndOf="@+id/dateButton"
-        app:layout_constraintTop_toTopOf="@+id/lvlSpin"
-        app:srcCompat="@android:drawable/ic_dialog_info"
-        app:tint="#2B6777"
-        tools:ignore="SpeakableTextPresentCheck" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

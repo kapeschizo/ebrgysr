@@ -40,7 +40,7 @@
         android:background="#2B6777"
         android:ems="10"
         android:fontFamily="@font/montserrat"
-        android:hint="Firstname"
+        android:hint="First Name"
         android:inputType="textPersonName"
         android:textAlignment="center"
         android:textColor="#FFFFFF"
@@ -61,7 +61,7 @@
         android:background="#2B6777"
         android:ems="10"
         android:fontFamily="@font/montserrat"
-        android:hint="Middlename"
+        android:hint="Middle Name"
         android:inputType="textPersonName"
         android:textAlignment="center"
         android:textColor="#FFFFFF"
@@ -82,7 +82,7 @@
         android:background="#2B6777"
         android:ems="10"
         android:fontFamily="@font/montserrat"
-        android:hint="Lastname"
+        android:hint="Last Name"
         android:inputType="textPersonName"
         android:textAlignment="center"
         android:textColor="#FFFFFF"
@@ -149,6 +149,7 @@
         android:id="@+id/signUpBtn"
         android:layout_width="152dp"
         android:layout_height="61dp"
+        android:layout_marginBottom="16dp"
         android:background="#2B6777"
         android:fontFamily="@font/catamaran"
         android:text="REGISTER"
@@ -158,8 +159,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/emailSignEtxt"
-        app:layout_constraintVertical_bias="0.427" />
+        app:layout_constraintTop_toBottomOf="@+id/termTxt" />
 
     <ProgressBar
         android:id="@+id/loading"
@@ -170,6 +170,29 @@
         app:layout_constraintBottom_toTopOf="@+id/signUpBtn"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/emailSignEtxt"
+        app:layout_constraintVertical_bias="0.508" />
+
+    <CheckBox
+        android:id="@+id/cbTerm"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="I agree to the"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/emailSignEtxt" />
+
+    <TextView
+        android:id="@+id/termTxt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Terms and Conditions and Privacy Policy"
+        android:textColor="#2B6777"
+        android:textSize="16dp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cbTerm" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

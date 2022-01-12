@@ -3,7 +3,6 @@ package com.bsrebrgy.ebsrv1
 import android.content.Intent
 import android.graphics.BitmapFactory
 import android.os.Bundle
-import android.view.KeyEvent
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
@@ -25,6 +24,7 @@ class DashboardUser : AppCompatActivity() {
     lateinit var session : SessionManager
     var user : String? = null
     var logoutImg : ImageView? = null
+    private var bkPress = 0L
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -102,6 +102,11 @@ class DashboardUser : AppCompatActivity() {
             val prof = Intent(this, UpdateProfile::class.java)
             startActivity(prof)
         }
+        val aboutImg = findViewById<ImageView>(R.id.aboutImg)
+        aboutImg.setOnClickListener {
+            val about = Intent(this, AboutUs::class.java)
+            startActivity(about)
+        }
     }
 
     private fun getUserDetails() {
@@ -158,10 +163,16 @@ class DashboardUser : AppCompatActivity() {
         getUserDetails()
     }
 
-    override fun onKeyDown(keyCode: Int, event: KeyEvent?): Boolean {
-        return if (keyCode == KeyEvent.KEYCODE_BACK) {
-            false
-        } else super.onKeyDown(keyCode, event)
+    override fun onBackPressed() {
+        if(bkPress + 2000 > System.currentTimeMillis())
+        {
+            finishAffinity()
+        }
+        else
+        {
+            Toast.makeText(applicationContext, "Press back again to exit App!", Toast.LENGTH_SHORT).show()
+        }
+        bkPress = System.currentTimeMillis()
     }
 
 }

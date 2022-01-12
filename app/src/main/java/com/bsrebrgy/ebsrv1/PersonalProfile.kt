@@ -3,6 +3,7 @@ package com.bsrebrgy.ebsrv1
 import android.app.DatePickerDialog
 import android.content.Intent
 import android.os.Bundle
+import android.view.View
 import android.widget.Button
 import android.widget.EditText
 import android.widget.RadioGroup
@@ -47,21 +48,22 @@ class PersonalProfile : AppCompatActivity() {
         user = data.get(SessionManager.KEY_USERNAME)
 
         bdateTxt = findViewById(R.id.bdateTxt)
+        ageTxt = findViewById(R.id.ageTxt)
+        moboTxt = findViewById(R.id.moboTxt)
         val bdateBtn = findViewById<Button>(R.id.bdateBtn)
-        bdateBtn.setOnClickListener {
-            val c = Calendar.getInstance()
-            d = c.get(Calendar.DATE)
-            m = c.get(Calendar.MONTH)
-            y = c.get(Calendar.YEAR)
+        bdateBtn.setOnClickListener(object : View.OnClickListener {
+            override fun onClick(view: View) {
+                val c = Calendar.getInstance()
+                val mYear = c[Calendar.YEAR]
+                val mMonth = c[Calendar.MONTH]
+                val mDay = c[Calendar.DAY_OF_MONTH]
+                val dateDialog =
+                    DatePickerDialog(view.getContext(), datePickerListener, mYear, mMonth, mDay)
+                dateDialog.datePicker.maxDate = Date().time
+                dateDialog.show()
+            }
+        })
 
-            val datePicker = DatePickerDialog(
-                this,
-                { view, year, month, dayOfMonth ->
-                    val mon = month+1
-                    bdateTxt?.setText(year.toString() + "-" + mon.toString() + "-" + dayOfMonth.toString())
-                }, y, m, d)
-            datePicker.show()
-        }
 
         val radioSexGroup = findViewById<RadioGroup>(R.id.radioSexGrp)
         radioSexGroup.setOnCheckedChangeListener { group, ID ->
@@ -90,29 +92,55 @@ class PersonalProfile : AppCompatActivity() {
             val extname = extTxt?.text.toString()
             maidenTxt = findViewById(R.id.maidenTxt)
             val maidenname = maidenTxt?.text.toString()
-            ageTxt = findViewById(R.id.ageTxt)
             val age = ageTxt?.text.toString()
             val bdate = bdateTxt?.text.toString()
             bplaceTxt = findViewById(R.id.bplaceTxt)
             val bplace = bplaceTxt?.text.toString()
-            moboTxt = findViewById(R.id.moboTxt)
             val mobo = moboTxt?.text.toString()
 
-            val homeaddress = Intent(this, HomeAddress::class.java)
-            homeaddress.putExtra("fname",fname)
-            homeaddress.putExtra("mname",mname)
-            homeaddress.putExtra("lname",lname)
-            homeaddress.putExtra("sexname",sexname)
-            homeaddress.putExtra("extname",extname)
-            homeaddress.putExtra("maidenname",maidenname)
-            homeaddress.putExtra("age",age)
-            homeaddress.putExtra("bdate",bdate)
-            homeaddress.putExtra("bplace",bplace)
-            homeaddress.putExtra("mobo",mobo)
-            startActivity(homeaddress)
+            val number = mobo.length
+            if(number == 11) {
+                val homeaddress = Intent(this, HomeAddress::class.java)
+                homeaddress.putExtra("fname", fname)
+                homeaddress.putExtra("mname", mname)
+                homeaddress.putExtra("lname", lname)
+                homeaddress.putExtra("sexname", sexname)
+                homeaddress.putExtra("extname", extname)
+                homeaddress.putExtra("maidenname", maidenname)
+                homeaddress.putExtra("age", age)
+                homeaddress.putExtra("bdate", bdate)
+                homeaddress.putExtra("bplace", bplace)
+                homeaddress.putExtra("mobo", mobo)
+                startActivity(homeaddress)
+            }
+            else
+            {
+                Toast.makeText(applicationContext, "Invalid Number", Toast.LENGTH_SHORT).show()
+            }
         }
     }
 
+    private val datePickerListener =
+        DatePickerDialog.OnDateSetListener { datePicker, year, month, day ->
+            val c = Calendar.getInstance()
+            c[Calendar.YEAR] = year
+            c[Calendar.MONTH] = month
+            c[Calendar.DAY_OF_MONTH] = day
+            val mon = month + 1
+            bdateTxt?.setText(year.toString() + "-" + mon.toString() + "-" + day.toString())
+            ageTxt?.setText(Integer.toString(calculateAge(c.timeInMillis)))
+        }
+
+    fun calculateAge(date: Long): Int {
+        val dob = Calendar.getInstance()
+        dob.timeInMillis = date
+        val today = Calendar.getInstance()
+        var age = today[Calendar.YEAR] - dob[Calendar.YEAR]
+        if (today[Calendar.DAY_OF_MONTH] < dob[Calendar.DAY_OF_MONTH]) {
+            age--
+        }
+        return age
+    }
     private fun getUserDetails() {
         val url = "http://www.barangaysanroqueantipolo.site/API/profiledisplayApi.php"
         val username = user.toString().trim { it <= ' ' }

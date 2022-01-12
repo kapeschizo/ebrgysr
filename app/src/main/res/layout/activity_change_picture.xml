@@ -20,6 +20,21 @@
         app:layout_constraintVertical_bias="0.0"
         app:srcCompat="@drawable/bgopacity" />
 
+    <Button
+        android:id="@+id/upproPic"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="50dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginRight="50dp"
+        android:background="#2B6777"
+        android:text="Upload (Profile Picture)"
+        app:backgroundTint="#2B6777"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.6"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/selfcamBtn" />
+
     <TextView
         android:id="@+id/textView26"
         android:layout_width="0dp"
@@ -83,7 +98,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="50dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="8dp"
         android:layout_marginRight="50dp"
         android:background="#2B6777"
         android:text="Update"
@@ -91,7 +106,7 @@
         app:layout_constraintBottom_toBottomOf="@+id/imageView14"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/selfcamBtn"
+        app:layout_constraintTop_toBottomOf="@+id/upproPic"
         app:layout_constraintVertical_bias="0.0" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

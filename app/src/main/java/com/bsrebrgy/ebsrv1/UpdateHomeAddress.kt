@@ -26,6 +26,7 @@ class UpdateHomeAddress : AppCompatActivity() {
     var pTxt: EditText? = null
     var hTxt: EditText? = null
     var haddBtn: Button? = null
+    var origpTxt = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -62,15 +63,17 @@ class UpdateHomeAddress : AppCompatActivity() {
             override fun onNothingSelected(parent: AdapterView<*>?) {
             }
 
-            override fun onItemSelected(
-                parent: AdapterView<*>?,
-                view: View?,
-                position: Int,
-                id: Long
-            ) {
+            override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
 //                Toast.makeText(this@Profile, "You Have Selected"+" "+sitioList[position],Toast.LENGTH_SHORT).show()
                 purok = purokList[position]
-                pTxt?.setText(purok)
+                if(purok == "Choose Purok")
+                {
+                    pTxt?.setText(origpTxt)
+                }
+                else {
+                    pTxt?.setText(purok)
+                }
+
             }
         }
 
@@ -100,7 +103,7 @@ class UpdateHomeAddress : AppCompatActivity() {
                     try {
                         val jsonObject = JSONObject(response)
                         val house = jsonObject.getString("house")
-                        val purok = jsonObject.getString("sitio")
+                        val pur = jsonObject.getString("sitio")
                         val brgy = jsonObject.getString("brgy")
                         val mun = jsonObject.getString("mun")
                         val prov = jsonObject.getString("prov")
@@ -109,7 +112,8 @@ class UpdateHomeAddress : AppCompatActivity() {
                         hTxt = findViewById(R.id.hTxt)
                         hTxt?.setText(house)
                         pTxt = findViewById(R.id.pTxt)
-                        pTxt?.setText(purok)
+                        pTxt?.setText(pur)
+                        origpTxt = pTxt?.text.toString()
                         val bTxt = findViewById<EditText>(R.id.bTxt)
                         bTxt.setText(brgy)
                         val muTxt = findViewById<EditText>(R.id.muTxt)

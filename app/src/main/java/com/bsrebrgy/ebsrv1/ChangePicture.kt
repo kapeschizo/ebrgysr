@@ -9,6 +9,7 @@ import android.util.Base64
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import com.android.volley.AuthFailureError
 import com.android.volley.DefaultRetryPolicy
@@ -21,6 +22,8 @@ import com.karumi.dexter.listener.PermissionDeniedResponse
 import com.karumi.dexter.listener.PermissionGrantedResponse
 import com.karumi.dexter.listener.PermissionRequest
 import com.karumi.dexter.listener.single.PermissionListener
+import org.json.JSONException
+import org.json.JSONObject
 import java.io.ByteArrayOutputStream
 import java.util.*
 
@@ -32,6 +35,7 @@ class ChangePicture : AppCompatActivity() {
     var changepicBtn: Button? = null
     var cameraView: ImageView? = null
     var updateBtn : Button? = null
+    var upproPic: Button? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -65,7 +69,34 @@ class ChangePicture : AppCompatActivity() {
         }
 
         updateBtn = findViewById(R.id.selfuploadidBtn)
-        updateBtn?.setOnClickListener { uploadtoserver() }
+        updateBtn?.setOnClickListener {
+            val alertdialog : AlertDialog = AlertDialog.Builder(this).create()
+            alertdialog.setTitle("Are You Sure")
+            alertdialog.setMessage("Do you want to Submit")
+
+            alertdialog.setButton(AlertDialog.BUTTON_POSITIVE,"Yes") {
+                    dialog, which ->
+                if(cameraView?.drawable == null)
+                {
+                    Toast.makeText(applicationContext, "No File", Toast.LENGTH_LONG).show()
+                }
+                else
+                {
+                    uploadtoserver()
+                }
+                dialog.dismiss()}
+
+            alertdialog.setButton(AlertDialog.BUTTON_NEGATIVE,"No") {
+                    dialog, which ->
+                dialog.dismiss()}
+            alertdialog.show()
+        }
+
+        upproPic = findViewById(R.id.upproPic)
+        upproPic?.setOnClickListener {
+            val uploadPic = Intent(this, UpdatePictureFileUpload::class.java)
+            startActivity(uploadPic)
+        }
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
@@ -90,12 +121,29 @@ class ChangePicture : AppCompatActivity() {
         val request: StringRequest =
             object : StringRequest(
                 Method.POST, url, Response.Listener { response ->
-                Toast.makeText(applicationContext, "File Uploaded Successfully", Toast.LENGTH_SHORT).show()
+                    try {
+                        val jsonObject = JSONObject(response)
+                        val success = jsonObject.getString("success")
+                        val message = jsonObject.getString("message")
 
-                val dashboardIntent = Intent(this, DashboardUser::class.java)
-                startActivity(dashboardIntent)
+                        if (success == "0")
+                        {
+                            Toast.makeText(applicationContext, "Profile Picture Uploaded Successfully", Toast.LENGTH_SHORT).show()
+                            val dashboardIntent = Intent(this, DashboardUser::class.java)
+                            startActivity(dashboardIntent)
+                        }
+                        else
+                        {
+                            Toast.makeText(applicationContext, message, Toast.LENGTH_SHORT).show()
+                        }
 
-            },
+
+                    } catch (e: JSONException) {
+                        e.printStackTrace()
+                        Toast.makeText(applicationContext, "Update Error! $e", Toast.LENGTH_LONG).show()
+                    }
+
+                },
                 Response.ErrorListener { error ->
                     Toast.makeText(applicationContext, error.toString(), Toast.LENGTH_SHORT).show()
                 }) {

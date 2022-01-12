@@ -95,7 +95,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:text="Certificate of Residency"
+        android:text="Barangay Clearance"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="@+id/certRes"
         app:layout_constraintStart_toStartOf="@+id/certRes"

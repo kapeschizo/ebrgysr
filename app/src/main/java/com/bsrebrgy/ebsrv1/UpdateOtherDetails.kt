@@ -31,6 +31,8 @@ class UpdateOtherDetails : AppCompatActivity() {
     var cTxt : EditText? = null
     var empTxt : EditText?= null
     var oBtn : Button? = null
+    var origempTxt = ""
+    var origcTxt = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -53,7 +55,14 @@ class UpdateOtherDetails : AppCompatActivity() {
             override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
 //                Toast.makeText(this@Profile, "You Have Selected"+" "+civilStat[position],Toast.LENGTH_SHORT).show()
                 civilStatus = civilStat[position]
-                cTxt?.setText(civilStatus)
+                if(civilStatus == "Change Civil Status")
+                {
+                    cTxt?.setText(origcTxt)
+                }
+                else {
+                    cTxt?.setText(civilStatus)
+                }
+
 
             }
         }
@@ -72,7 +81,15 @@ class UpdateOtherDetails : AppCompatActivity() {
             override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
 //                Toast.makeText(this@Profile, "You Have Selected"+" "+empStat[position],Toast.LENGTH_SHORT).show()
                 empStatus = empStat[position]
-                empTxt?.setText(empStatus)
+
+                if(empStatus == "Change Employment Status")
+                {
+                    empTxt?.setText(origempTxt)
+                }
+                else {
+                    empTxt?.setText(empStatus)
+                }
+
 
                 if (empStatus == "Student" || empStatus == "Unemployed") {
                     ocTxt?.isEnabled = false
@@ -124,8 +141,10 @@ class UpdateOtherDetails : AppCompatActivity() {
 
                     cTxt = findViewById(R.id.cTxt)
                     cTxt?.setText(civil)
+                    origcTxt = cTxt?.text.toString()
                     empTxt = findViewById(R.id.empTxt)
                     empTxt?.setText(emp)
+                    origempTxt = empTxt?.text.toString()
                     ocTxt?.setText(occu)
                     monTxt?.setText(income)
                     rTxt = findViewById(R.id.rTxt)

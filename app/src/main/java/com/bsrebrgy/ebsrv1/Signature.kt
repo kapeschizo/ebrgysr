@@ -40,6 +40,7 @@ class Signature : AppCompatActivity() {
     var path: String? = null
     var encodedimage: String? = null
     var buttonCamera: Button? = null
+    var buttonUpload: Button? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -81,6 +82,12 @@ class Signature : AppCompatActivity() {
         buttonCamera?.setOnClickListener {
             val signCam = Intent(this, SignatureUpload::class.java)
             startActivity(signCam)
+        }
+
+        buttonUpload = findViewById(R.id.buttonUpload)
+        buttonUpload?.setOnClickListener {
+            val signUpload = Intent(this, SignatureFileUpload::class.java)
+            startActivity(signUpload)
         }
     }
 

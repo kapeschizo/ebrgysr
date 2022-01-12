@@ -84,7 +84,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.33" />
+        app:layout_constraintGuide_percent="0.32996207" />
 
     <ImageView
         android:id="@+id/fireImg"
@@ -132,12 +132,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.84" />
+        app:layout_constraintGuide_percent="0.84070796" />
 
     <ImageView
         android:id="@+id/cusImg"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         android:layout_marginStart="32dp"
         android:layout_marginTop="32dp"
         android:layout_marginEnd="32dp"
@@ -177,7 +177,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
-        android:text="FIRE STATION"
+        android:text="FIRE STATIONS"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="@+id/fireImg"
         app:layout_constraintStart_toStartOf="@+id/fireImg"
@@ -188,7 +188,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
-        android:text="POLICE"
+        android:text="POLICE STATIONS"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="@+id/polImg"
         app:layout_constraintHorizontal_bias="0.509"

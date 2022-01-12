@@ -41,5 +41,11 @@ class UpdateProfile : AppCompatActivity() {
             val sigandid = Intent(this, UpdateIdsSignature::class.java)
             startActivity(sigandid)
         }
+
+        val cpassBtn = findViewById<Button>(R.id.cpassBtn)
+        cpassBtn.setOnClickListener {
+            val cpass = Intent(this, ChangePassword::class.java)
+            startActivity(cpass)
+        }
     }
 }

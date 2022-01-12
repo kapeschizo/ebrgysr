@@ -76,6 +76,7 @@
         android:layout_marginBottom="16dp"
         android:background="#2B6777"
         android:text="Send"
+        android:enabled="false"
         android:textSize="10sp"
         app:backgroundTint="#2B6777"
         app:layout_constraintBottom_toBottomOf="parent"

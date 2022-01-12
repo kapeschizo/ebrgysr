@@ -11,10 +11,31 @@
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
-        android:label="@string/app_name"
+        android:label="EBSRAC"
         android:supportsRtl="true"
         android:theme="@style/Theme.EBSRV1"
         android:usesCleartextTraffic="true">
+        <activity
+            android:name=".ContactUs"
+            android:exported="true" />
+        <activity
+            android:name=".UpdatePictureFileUpload"
+            android:exported="true" />
+        <activity
+            android:name=".ChangePassword"
+            android:exported="true" />
+        <activity
+            android:name=".AboutUs"
+            android:exported="true" />
+        <activity
+            android:name=".SelfFileUpload"
+            android:exported="true" />
+        <activity
+            android:name=".UploadIDFileUpload"
+            android:exported="true" />
+        <activity
+            android:name=".SignatureFileUpload"
+            android:exported="true" />
         <activity
             android:name=".UpdateSelfieFileUpload"
             android:exported="true" />

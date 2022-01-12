@@ -9,8 +9,6 @@ import android.os.Bundle
 import android.provider.MediaStore
 import android.text.format.DateFormat
 import android.util.Base64
-import android.view.Gravity
-import android.view.View
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import com.android.volley.AuthFailureError
@@ -50,10 +48,6 @@ class EmergencyReport : AppCompatActivity(), DatePickerDialog.OnDateSetListener,
     var myYear : Int = 0
     var myHour : Int = 0
     var myMinute : Int = 0
-    var lvlBtn : ImageButton? = null
-    var lvlSpin: Spinner? = null
-    var lvlAdapter: ArrayAdapter<String>? = null
-    var lvlStatus = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -86,28 +80,6 @@ class EmergencyReport : AppCompatActivity(), DatePickerDialog.OnDateSetListener,
                 }).check()
         }
 
-        lvlSpin = findViewById(R.id.lvlSpin)
-
-        val lvlStat = arrayOf("Level 1","Level 2","Level 3")
-        lvlAdapter = ArrayAdapter<String>(this@EmergencyReport,android.R.layout.simple_spinner_dropdown_item,lvlStat)
-        lvlSpin?.setAdapter(lvlAdapter)
-
-        lvlSpin?.onItemSelectedListener = object : AdapterView.OnItemSelectedListener{
-            override fun onNothingSelected(parent: AdapterView<*>?) {
-            }
-            override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
-//                Toast.makeText(this@EmergencyReport, "You Have Selected"+" "+lvlStat[position],Toast.LENGTH_SHORT).show()
-                lvlStatus = lvlStat[position]
-            }
-        }
-
-        lvlBtn = findViewById(R.id.lvlBtn)
-        lvlBtn?.setOnClickListener {
-            val message = "LEVEL OF EMERGENCY RESPONSE\n\nLevel 1 - Minor Accident \nLevel 2 - Major Accident \nLevel 3 - Super Major Major"
-            val toast = Toast.makeText(this@EmergencyReport, message, Toast.LENGTH_LONG)
-            toast.setGravity(Gravity.TOP,0,250)
-            toast.show()
-        }
 
         locTxt = findViewById(R.id.locTxt)
 
@@ -170,7 +142,6 @@ class EmergencyReport : AppCompatActivity(), DatePickerDialog.OnDateSetListener,
         val loc = locTxt?.text.toString().trim { it <= ' ' }
         val desc = descTxt?.text.toString().trim { it <= ' ' }
         val date = dateTime?.text.toString().trim { it <= ' ' }
-        val lvl = lvlStatus
         val request: StringRequest =
             object : StringRequest(
                 Method.POST, url, Response.Listener { response ->
@@ -192,7 +163,6 @@ class EmergencyReport : AppCompatActivity(), DatePickerDialog.OnDateSetListener,
                     map.put("loc", loc)
                     map.put("desc", desc)
                     map.put("date", date)
-                    map.put("lvl", lvl)
                     return map
                 }
             }

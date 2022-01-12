@@ -1,6 +1,7 @@
 package com.bsrebrgy.ebsrv1
 
 import android.os.Bundle
+import android.widget.SearchView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -9,11 +10,14 @@ import com.android.volley.RequestQueue
 import com.android.volley.toolbox.JsonObjectRequest
 import com.android.volley.toolbox.Volley
 import org.json.JSONException
+import java.util.*
+import kotlin.collections.ArrayList
 
 class Hotlines3 : AppCompatActivity() {
     lateinit var session : SessionManager
     var user : String? = null
     var hotlinelist: MutableList<Hline>? = null
+    var temphotlinelist : MutableList<Hline>? = null
     var recyclerView: RecyclerView? = null
     var requestQueue: RequestQueue? = null
     private var layoutManager: RecyclerView.LayoutManager? = null
@@ -34,6 +38,38 @@ class Hotlines3 : AppCompatActivity() {
         recyclerView?.layoutManager = layoutManager
 
         hotlinelist = ArrayList()
+        temphotlinelist = ArrayList()
+
+
+        val search = findViewById<SearchView>(R.id.search_it)
+        search.setOnQueryTextListener(object : SearchView.OnQueryTextListener{
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                return false
+            }
+
+            override fun onQueryTextChange(newText: String?): Boolean {
+
+                temphotlinelist?.clear()
+                val searchtext = newText!!.toLowerCase(Locale.getDefault())
+                if (searchtext.isNotEmpty()){
+
+                    hotlinelist?.forEach {
+
+                        if(it.hname.toLowerCase(Locale.getDefault()).contains(searchtext)){
+                            temphotlinelist?.add(it)
+                        }
+                    }
+                    recyclerView?.adapter!!.notifyDataSetChanged()
+                }
+                else
+                {
+                    temphotlinelist?.clear()
+                    temphotlinelist?.addAll(hotlinelist!!)
+                    recyclerView?.adapter!!.notifyDataSetChanged()
+                }
+                return false
+            }
+        })
 
         loadHotlines()
     }
@@ -53,9 +89,10 @@ class Hotlines3 : AppCompatActivity() {
                         )
                     )
                 }
+                temphotlinelist?.addAll(hotlinelist!!)
                 val adapter = HotlineAdapter(
                     this@Hotlines3,
-                    hotlinelist!!
+                    temphotlinelist!!
                 )
                 recyclerView?.adapter = adapter
 

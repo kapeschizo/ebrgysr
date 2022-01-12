@@ -88,7 +88,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/catamaran"
-                    android:text="TextView"
                     android:textColor="#2b6777"
                     android:textSize="18dp"
                     android:textStyle="bold" />
@@ -119,7 +118,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/catamaran"
-                    android:text="TextView"
                     android:textColor="#2b6777"
                     android:textSize="18dp"
                     android:textStyle="bold" />
@@ -150,7 +148,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/catamaran"
-                    android:text="TextView"
                     android:textColor="#2b6777"
                     android:textSize="18dp"
                     android:textStyle="bold" />
@@ -181,7 +178,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/catamaran"
-                    android:text="TextView"
                     android:textColor="#2b6777"
                     android:textSize="18dp"
                     android:textStyle="bold" />
@@ -212,7 +208,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/catamaran"
-                    android:text="TextView"
                     android:textColor="#2b6777"
                     android:textSize="18dp"
                     android:textStyle="bold" />
@@ -243,7 +238,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/catamaran"
-                    android:text="TextView"
                     android:textColor="#2b6777"
                     android:textSize="18dp"
                     android:textStyle="bold" />
@@ -274,7 +268,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/catamaran"
-                    android:text="TextView"
                     android:textColor="#2b6777"
                     android:textSize="18dp"
                     android:textStyle="bold" />
@@ -305,7 +298,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/catamaran"
-                    android:text="TextView"
                     android:textColor="#2b6777"
                     android:textSize="18dp"
                     android:textStyle="bold" />
@@ -336,7 +328,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/catamaran"
-                    android:text="TextView"
                     android:textColor="#2b6777"
                     android:textSize="18dp"
                     android:textStyle="bold" />
@@ -367,7 +358,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/catamaran"
-                    android:text="TextView"
                     android:textColor="#2b6777"
                     android:textSize="18dp"
                     android:textStyle="bold" />
@@ -410,7 +400,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/catamaran"
-                    android:text="TextView"
                     android:textColor="#2b6777"
                     android:textSize="18dp"
                     android:textStyle="bold" />
@@ -440,7 +429,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/catamaran"
-                    android:text="TextView"
                     android:textColor="#2b6777"
                     android:textSize="18dp"
                     android:textStyle="bold" />
@@ -483,7 +471,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/catamaran"
-                    android:text="TextView"
                     android:textColor="#2b6777"
                     android:textSize="18dp"
                     android:textStyle="bold" />
@@ -513,7 +500,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/catamaran"
-                    android:text="TextView"
                     android:textColor="#2b6777"
                     android:textSize="18dp"
                     android:textStyle="bold" />
@@ -543,7 +529,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/catamaran"
-                    android:text="TextView"
                     android:textColor="#2b6777"
                     android:textSize="18dp"
                     android:textStyle="bold" />
@@ -573,7 +558,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/catamaran"
-                    android:text="TextView"
                     android:textColor="#2b6777"
                     android:textSize="18dp"
                     android:textStyle="bold" />
@@ -604,7 +588,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/catamaran"
-                    android:text="TextView"
                     android:textColor="#2b6777"
                     android:textSize="18dp"
                     android:textStyle="bold" />
@@ -634,7 +617,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/catamaran"
-                    android:text="TextView"
                     android:textColor="#2b6777"
                     android:textSize="18dp"
                     android:textStyle="bold" />

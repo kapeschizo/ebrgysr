@@ -4,6 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:focusable="auto"
+    android:focusableInTouchMode="true"
     tools:context=".Request">
 
 
@@ -91,7 +93,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/catamaran"
-                    android:text="TextView"
                     android:textColor="#2b6777"
                     android:textSize="18dp"
                     android:textStyle="bold" />
@@ -122,7 +123,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/catamaran"
-                    android:text="TextView"
                     android:textColor="#2b6777"
                     android:textSize="18dp"
                     android:textStyle="bold" />
@@ -153,7 +153,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/catamaran"
-                    android:text="TextView"
                     android:textColor="#2b6777"
                     android:textSize="18dp"
                     android:textStyle="bold" />
@@ -184,7 +183,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/catamaran"
-                    android:text="TextView"
                     android:textColor="#2b6777"
                     android:textSize="18dp"
                     android:textStyle="bold" />
@@ -215,7 +213,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/catamaran"
-                    android:text="TextView"
                     android:textColor="#2b6777"
                     android:textSize="18dp"
                     android:textStyle="bold" />
@@ -246,7 +243,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/catamaran"
-                    android:text="TextView"
                     android:textColor="#2b6777"
                     android:textSize="18dp"
                     android:textStyle="bold" />
@@ -277,7 +273,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/catamaran"
-                    android:text="TextView"
                     android:textColor="#2b6777"
                     android:textSize="18dp"
                     android:textStyle="bold" />
@@ -308,7 +303,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/catamaran"
-                    android:text="TextView"
                     android:textColor="#2b6777"
                     android:textSize="18dp"
                     android:textStyle="bold" />
@@ -340,7 +334,6 @@
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="15dp"
                     android:fontFamily="@font/catamaran"
-                    android:text="TextView"
                     android:textColor="#2b6777"
                     android:textSize="18dp"
                     android:textStyle="bold" />
@@ -374,8 +367,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
+                android:focusable="true"
+                android:focusableInTouchMode="true"
                 android:hint="Purpose"
-                android:inputType="textPersonName" />
+                android:inputType="textPersonName"/>
 
             <TextView
                 android:id="@+id/textView295"
@@ -399,6 +394,40 @@
                 android:textAlignment="center"
                 android:textSize="18sp"
                 tools:ignore="SpeakableTextPresentCheck" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:gravity="center_horizontal"
+                android:orientation="horizontal">
+
+                <CheckBox
+                    android:id="@+id/cbTerm"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="I agree to the" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:gravity="center_horizontal"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/termTxt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Terms and Conditions and Privacy Policy"
+                    android:textColor="#2B6777"
+                    android:textSize="16dp"
+                    android:textStyle="bold" />
+
+            </LinearLayout>
 
             <Button
                 android:id="@+id/submitBtn"
