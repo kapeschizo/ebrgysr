@@ -2,8 +2,6 @@ package com.bsrebrgy.ebsrv1
 
 import android.os.Bundle
 import android.os.Handler
-import android.text.Editable
-import android.text.TextWatcher
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
@@ -66,26 +64,26 @@ class Chat : AppCompatActivity() {
         sendBtn = findViewById(R.id.sendBtn)
         txtMsg = findViewById(R.id.txtMsg)
 
-        txtMsg?.addTextChangedListener(object: TextWatcher
-        {
-            override fun onTextChanged(s:CharSequence, start:Int, before:Int, count:Int) {
-                if (s.toString().trim({ it <= ' ' }).isEmpty())
-                {
-                    sendBtn?.setEnabled(false)
-                }
-                else
-                {
-                    sendBtn?.setEnabled(true)
-                }
-            }
-            override fun beforeTextChanged(s:CharSequence, start:Int, count:Int,
-                                           after:Int) {
-                // TODO Auto-generated method stub
-            }
-            override fun afterTextChanged(s: Editable) {
-                // TODO Auto-generated method stub
-            }
-        })
+//        txtMsg?.addTextChangedListener(object: TextWatcher
+//        {
+//            override fun onTextChanged(s:CharSequence, start:Int, before:Int, count:Int) {
+//                if (s.toString().trim({ it <= ' ' }).isEmpty())
+//                {
+//                    sendBtn?.setEnabled(false)
+//                }
+//                else
+//                {
+//                    sendBtn?.setEnabled(true)
+//                }
+//            }
+//            override fun beforeTextChanged(s:CharSequence, start:Int, count:Int,
+//                                           after:Int) {
+//                // TODO Auto-generated method stub
+//            }
+//            override fun afterTextChanged(s: Editable) {
+//                // TODO Auto-generated method stub
+//            }
+//        })
         sendBtn?.setOnClickListener { uploadtoserver()
         }
     }

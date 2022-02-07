@@ -33,7 +33,6 @@ class Announcement : AppCompatActivity() {
 
         val data = session.getUserDetails()
         user = data.get(SessionManager.KEY_USERNAME)
-
         requestQueue = Volley.newRequestQueue(this)
         recyclerView = findViewById(R.id.recyclerView)
 

@@ -53,7 +53,7 @@ class AboutUs : AppCompatActivity() {
                 "EBSRAC is all about using technology to fulfill everyone's needs. With state-of-the-art barangay information management system, the process for acquiring your \n" +
                         "essential documents will be streamlined and hassle-free. \n\nWith in-app news bulletin and community chat, residents are up to date with current affairs, events and festivities hosted by EBSRAC.",
                 "App Info",
-                "App Name : EBSRAC\nApp Version : 1.0.6\n"
+                "App Name : EBSRAC\nApp Version : 1.0.7\n"
             )
         )
         aboutlist?.add(
@@ -94,7 +94,7 @@ class AboutUs : AppCompatActivity() {
                         "4. Barangay App nor its admins are not Liable for any personal Transactions done by the users \n" +
                         "5. The payment and needed additional requirements for your requested documents will be emailed together with the \n" +
                         "claiming date.\n" +
-                        "6. Claim Document within 3 working days upon Approval and said date scheduled.\n" +
+                        "6. Claim Document within 1 working days upon Approval and said date scheduled.\n" +
                         "7. Unclaimed Documents after the 3 day time period will be Discarded."
             )
         )
